@@ -69,7 +69,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		if (index > this.size - 1) {
-			return null;
+			return "";
 		} else if (index == 0) {
 			return this.head.getValue();
 		} else if (index == this.size - 1) {
