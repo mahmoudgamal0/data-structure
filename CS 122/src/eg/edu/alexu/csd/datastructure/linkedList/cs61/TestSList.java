@@ -30,9 +30,9 @@ public class TestSList {
 	public void correctMiddleInsertion()
 	{
 		SLinkedList list = new SLinkedList();
-		list.add(10);
-		list.add(20);
-		list.add(30);
+		list.add(0,10);
+		list.add(1,20);
+		list.add(2,30);
 		list.add(list.size(),25);
 		list.add(2, 5);
 		list.add(3,15);

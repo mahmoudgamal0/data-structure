@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.datastructure.linkedList.cs61;
 
 import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
 
+
 public class SLinkedList implements ILinkedList{
 
 	
@@ -9,7 +10,8 @@ public class SLinkedList implements ILinkedList{
 	private SNode head;
 	private SNode tail;
 
-	public SLinkedList() {
+	public SLinkedList() 
+	{
 		this.size = 0;
 		this.tail = null;
 		this.head = null;
@@ -18,67 +20,79 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(int index, Object element) {
 	
-		if(index > this.size)
-			return;
-		else if (index > this.size - 1) 
+//		if(index > this.size)
+//			return;
+//		else if (index == this.size) 
+//		{
+//			this.add(element);
+//		} 
+//		else 
+//		{
+//			SNode tmp = this.head;
+//			for (int i = 0; i < index - 1; i++) {
+//				tmp = tmp.getNext();
+//			}
+//			SNode addedNode = new SNode(tmp.getNext(), element);
+//			tmp.setNext(addedNode);
+//			this.size++;
+//		}
+		
+		if(index <= this.size)
 		{
-			this.add(element);
-		} 
-		else if (index == 0) 
-		{
-			if (this.size == 0) 
+			if(index == this.size)
 			{
 				this.add(element);
-			} 
-			else 
+			}
+			else
 			{
-				SNode tmp = this.head;
-				SNode addedNode = new SNode(tmp, element);
-				this.head = addedNode;
+				SNode temp = this.head;
+				for(int i = 0 ; i < index - 1 ; i++)
+					temp = temp.getNext();
+				SNode newNode = new SNode(temp.getNext(),element);
+				temp.setNext(newNode);
 				this.size++;
 			}
-		} 
-		else if (index == this.size - 1) 
-		{
-			this.add(element);
-		} 
-		else 
-		{
-			SNode tmp = this.head;
-			for (int i = 0; i < index - 1; i++) {
-				tmp = tmp.getNext();
-			}
-			SNode addedNode = new SNode(tmp.getNext(), element);
-			tmp.setNext(addedNode);
-			this.size++;
 		}
 
 	}
 
 	@Override
 	public void add(Object element) {
-		if (this.size == 0) 
-		{
-			SNode addedNode = new SNode(null, element);
-			this.head = addedNode;
-			this.tail = addedNode;
-			this.size++;
-		} 
-		else if (this.size == 1) 
-		{
-			SNode addedNode = new SNode(null, element);
-			this.head.setNext(addedNode);
-			this.tail = addedNode;
-			this.size++;
-		} 
-		else 
-		{
-			SNode tmp = this.tail;
-			SNode addedNode = new SNode(null, element);
-			tmp.setNext(addedNode);
-			this.tail = addedNode;
-			this.size++;
-		}
+//		if (this.size == 0) 
+//		{
+//			SNode addedNode = new SNode(null, element);
+//			this.head = addedNode;
+//			this.tail = addedNode;
+//			this.size++;
+//		} 
+//		else if (this.size == 1) 
+//		{
+//			SNode addedNode = new SNode(null, element);
+//			this.head.setNext(addedNode);
+//			this.tail = addedNode;
+//			this.size++;
+//		} 
+//		else 
+//		{
+//			SNode tmp = this.tail;
+//			SNode addedNode = new SNode(null, element);
+//			tmp.setNext(addedNode);
+//			this.tail = addedNode;
+//			this.size++;
+//		}
+		
+		SNode entry = new SNode(null,element);
+		 if(this.isEmpty())
+		 {
+		 	this.head = entry;
+		 	this.tail = entry;
+		 }
+		 else
+		 {
+		 	this.tail.setNext(entry);
+		 	this.tail = this.tail.getNext();
+		 }
+		 this.size++;	
 	}
 
 	@Override
