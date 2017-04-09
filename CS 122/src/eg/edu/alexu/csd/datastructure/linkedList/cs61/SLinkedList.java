@@ -1,6 +1,6 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs61;
 
-import eg.edu.alexu.csd.datasturcture.linkedList.ILinkedList;
+import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
 
 public class SLinkedList implements ILinkedList{
 
