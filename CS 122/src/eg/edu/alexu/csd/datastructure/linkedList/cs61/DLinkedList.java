@@ -55,7 +55,7 @@ public class DLinkedList implements ILinkedList {
 	}
 
 	public void add(Object element) {
-		if (size == 0) 
+		if (this.size == 0) 
 		{
 			DNode addedNode = new DNode(this.header, this.trailer, element);
 			this.header.setNext(addedNode);

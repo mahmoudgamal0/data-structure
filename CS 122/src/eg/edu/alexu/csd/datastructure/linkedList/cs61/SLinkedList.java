@@ -20,20 +20,30 @@ public class SLinkedList implements ILinkedList{
 	
 		if(index > this.size)
 			return;
-		else if (index > this.size - 1) {
+		else if (index > this.size - 1) 
+		{
 			this.add(element);
-		} else if (index == 0) {
-			if (this.size == 0) {
+		} 
+		else if (index == 0) 
+		{
+			if (this.size == 0) 
+			{
 				this.add(element);
-			} else {
+			} 
+			else 
+			{
 				SNode tmp = this.head;
 				SNode addedNode = new SNode(tmp, element);
 				this.head = addedNode;
 				this.size++;
 			}
-		} else if (index == this.size - 1) {
-			add(element);
-		} else {
+		} 
+		else if (index == this.size - 1) 
+		{
+			this.add(element);
+		} 
+		else 
+		{
 			SNode tmp = this.head;
 			for (int i = 0; i < index - 1; i++) {
 				tmp = tmp.getNext();
@@ -47,17 +57,22 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void add(Object element) {
-		if (size == 0) {
+		if (this.size == 0) 
+		{
 			SNode addedNode = new SNode(null, element);
 			this.head = addedNode;
 			this.tail = addedNode;
 			this.size++;
-		} else if (this.size == 1) {
+		} 
+		else if (this.size == 1) 
+		{
 			SNode addedNode = new SNode(null, element);
 			this.head.setNext(addedNode);
 			this.tail = addedNode;
 			this.size++;
-		} else {
+		} 
+		else 
+		{
 			SNode tmp = this.tail;
 			SNode addedNode = new SNode(null, element);
 			tmp.setNext(addedNode);
@@ -69,14 +84,14 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		if (index > this.size - 1) {
-			return "";
+			return null;
 		} else if (index == 0) {
 			return this.head.getValue();
 		} else if (index == this.size - 1) {
 			return this.tail.getValue();
 		} else {
 			SNode tmp = this.head;
-			for (int i = 0; i < index; i++) {
+			for (int i = 0; i < index ; i++) {
 				tmp = tmp.getNext();
 			}
 			return tmp.getValue();
@@ -85,30 +100,16 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void set(int index, Object element) {
-		if (index > this.size - 1 || this.size == 0) {
+		if (index > this.size - 1 || this.size == 0) 
+		{
 
-		} else if (index == 0) {
-			if (this.size == 1) {
-				this.clear();
-				this.add(element);
-			} else {
-				SNode tmp = this.head;
-				SNode addedNode = new SNode(tmp.getNext(), element);
-				tmp.setNext(null);
-				this.head = addedNode;
-			}
 		} else {
 			SNode tmp = this.head;
-			for (int i = 0; i < index - 1; i++) {
+			for (int i = 0; i < index; i++) 
+			{
 				tmp = tmp.getNext();
 			}
-			SNode replacedNode = tmp.getNext();
-			SNode addedNode = new SNode(replacedNode.getNext(), element);
-			if (this.tail == replacedNode) {
-				this.tail = addedNode;
-			}
-			tmp.setNext(addedNode);
-			replacedNode.setNext(null);
+			tmp.setValue(element);
 		}
 	}
 
@@ -130,24 +131,34 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void remove(int index) {
-		if (index > this.size - 1 || this.size == 0) {
+		if (index > this.size - 1 || this.size == 0) 
+		{
 
-		} else if (index == 0) {
-			if (this.size == 1) {
+		}
+		else if (index == 0) 
+		{
+			if (this.size == 1) 
+			{
 				this.clear();
-			} else {
+			} 
+			else 
+			{
 				SNode tmp = this.head;
 				this.head = tmp.getNext();
 				tmp.setNext(null);
 				this.size--;
 			}
-		} else {
+		} 
+		else 
+		{
 			SNode tmp = this.head;
-			for (int i = 0; i < index - 1; i++) {
+			for (int i = 0; i < index - 1; i++) 
+			{
 				tmp = tmp.getNext();
 			}
 			SNode removedNode = tmp.getNext();
-			if (this.tail == removedNode) {
+			if (this.tail == removedNode) 
+			{
 				this.tail = tmp;
 			}
 			tmp.setNext(removedNode.getNext());
@@ -166,7 +177,7 @@ public class SLinkedList implements ILinkedList{
 	public ILinkedList sublist(int fromIndex, int toIndex) {
 		if (fromIndex < 0 || fromIndex > this.size - 1) {
 			SLinkedList newList = new SLinkedList();
-			return newList;
+			return null;
 		} else {
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
