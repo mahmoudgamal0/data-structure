@@ -198,6 +198,11 @@ public class SLinkedList implements ILinkedList{
 		else if(index == 0)
 		{
 			this.head = this.head.getNext();
+			this.size--;
+			if(isEmpty())
+			{
+				this.tail = null;
+			}
 		}
 		else
 		{
@@ -216,8 +221,9 @@ public class SLinkedList implements ILinkedList{
 			{
 				temp.setNext(temp.getNext().getNext());
 			}
+			this.size--;
 		}
-		this.size--;
+		
 	}
 
 	@Override
