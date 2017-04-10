@@ -19,7 +19,6 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(int index, Object element) {
 	
-		
 		if (index >= this.size) 
 		{
 			this.add(element);
@@ -43,20 +42,20 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void add(Object element) {
-		if (this.size == 0) 
+		if (this.isEmpty()) 
 		{
 			SNode addedNode = new SNode(null, element);
 			this.head = addedNode;
 			this.tail = addedNode;
 			this.size++;
 		} 
-		else if (this.size == 1) 
-		{
-			SNode addedNode = new SNode(null, element);
-			this.head.setNext(addedNode);
-			this.tail = addedNode;
-			this.size++;
-		} 
+//		else if (this.size == 1) 
+//		{
+//			SNode addedNode = new SNode(null, element);
+//			this.head.setNext(addedNode);
+//			this.tail = addedNode;
+//			this.size++;
+//		} 
 		else 
 		{
 			SNode tmp = this.tail;
@@ -69,34 +68,69 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public Object get(int index) {
-		if (index > this.size - 1)
-		{
+//		if (index > this.size - 1)
+//		{
+//			return null;
+//		} 
+//		else if (index == 0) 
+//		{
+//			return this.head.getValue();
+//		}
+//		else if (index == this.size - 1) 
+//		{
+//			return this.tail.getValue();
+//		} 
+//		else 
+//		{
+//			SNode tmp = this.head;
+//			for (int i = 0; i < index ; i++) {
+//				tmp = tmp.getNext();
+//			}
+//			return tmp.getValue();
+//		}
+		
+		if(isEmpty())
 			return null;
-		} else if (index == 0) {
-			return this.head.getValue();
-		} else if (index == this.size - 1) {
-			return this.tail.getValue();
-		} else {
-			SNode tmp = this.head;
-			for (int i = 0; i < index ; i++) {
-				tmp = tmp.getNext();
+		else if(index > this.size)
+			return null;
+		else
+		{
+			SNode temp = this.head;
+			for(int i = 0 ; i < index ; i++)
+			{
+				temp = temp.getNext();
 			}
-			return tmp.getValue();
+			return temp.getValue();
 		}
+		
 	}
 
 	@Override
 	public void set(int index, Object element) {
-		if (index > this.size - 1 || this.size == 0) 
+//		if (index > this.size - 1 || this.size == 0) 
+//		{
+//
+//		} else {
+//			SNode tmp = this.head;
+//			for (int i = 0; i < index; i++) 
+//			{
+//				tmp = tmp.getNext();
+//			}
+//			tmp.setValue(element);
+//		}
+		
+		if(isEmpty())
+			return;
+		else if(index > this.size)
+			return;
+		else
 		{
-
-		} else {
-			SNode tmp = this.head;
-			for (int i = 0; i < index; i++) 
+			SNode temp = this.head;
+			for(int i = 0 ; i < index ; i++)
 			{
-				tmp = tmp.getNext();
+				temp = temp.getNext();
 			}
-			tmp.setValue(element);
+			temp.setValue(element);
 		}
 	}
 
