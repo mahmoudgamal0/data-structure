@@ -19,8 +19,6 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(int index, Object element) {
 	
-		if(!(index > 0))
-			return;
 		if(index > this.size)
 			return;
 		else if (index == this.size) 
@@ -67,7 +65,8 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public Object get(int index) {
-		if (index > this.size - 1 || index < 0) {
+		if (index > this.size - 1)
+		{
 			return null;
 		} else if (index == 0) {
 			return this.head.getValue();
@@ -84,7 +83,7 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void set(int index, Object element) {
-		if (index > this.size - 1 || this.size == 0 || index < 0) 
+		if (index > this.size - 1 || this.size == 0) 
 		{
 
 		} else {
@@ -115,7 +114,7 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void remove(int index) {
-		if (index > this.size - 1 || this.size == 0 || index < 0) 
+		if (index > this.size - 1 || this.size == 0) 
 			return;
 		else if (index == 0) 
 		{
@@ -159,7 +158,7 @@ public class SLinkedList implements ILinkedList{
 	public ILinkedList sublist(int fromIndex, int toIndex) {
 		if (fromIndex < 0 || fromIndex > this.size - 1) {
 			SLinkedList newList = new SLinkedList();
-			return null;
+			return newList;
 		} else {
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
