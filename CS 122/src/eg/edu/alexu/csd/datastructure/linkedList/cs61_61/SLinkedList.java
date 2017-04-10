@@ -274,7 +274,7 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public boolean contains(Object o) {
-		if (this.size == 0) {
+		if (this.isEmpty()) {
 			return false;
 		} else {
 			SNode tmp = this.head;

@@ -39,5 +39,6 @@ public class Main {
 		list.print();
 		list.add(5,7);
 		list.print();
+		System.out.println(list.contains(7));
 	}
 }
