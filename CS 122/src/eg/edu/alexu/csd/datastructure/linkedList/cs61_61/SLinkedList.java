@@ -103,7 +103,7 @@ public class SLinkedList implements ILinkedList{
 //		}
 		
 		if(isEmpty())
-			return null;
+			return (Object)null;
 		else if(index >= this.size)
 			return null;
 		else
