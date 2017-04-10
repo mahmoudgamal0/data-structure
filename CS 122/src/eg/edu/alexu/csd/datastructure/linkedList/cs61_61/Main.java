@@ -22,8 +22,22 @@ public class Main {
 		SLinkedList list = new SLinkedList();
 		SLinkedList x = new SLinkedList();
 		
-		list.add(2);
-		list.remove(0);
+		list.add(0,2);
 		System.out.println(list.get(0));
+		list.add(3);
+		list.add(4);
+		list.print();
+		System.out.println(list.get(0));
+		System.out.println(list.get(1));
+		System.out.println(list.get(2));
+		System.out.println(list.get(3));
+		list.add(0,1);
+		list.print();
+		list.add(5,5);
+		list.print();
+		list.add(4,6);
+		list.print();
+		list.add(5,7);
+		list.print();
 	}
 }

@@ -47,28 +47,36 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(Object element)
 	{
-		if (this.isEmpty()) 
-		{
-			SNode addedNode = new SNode(null, element);
-			this.head = addedNode;
-			this.tail = addedNode;
-			this.size++;
-		} 
-//		else if (this.size == 1) 
+//		if (this.isEmpty()) 
 //		{
 //			SNode addedNode = new SNode(null, element);
-//			this.head.setNext(addedNode);
+//			this.head = addedNode;
 //			this.tail = addedNode;
 //			this.size++;
 //		} 
-		else 
-		{
-			SNode tmp = this.tail;
-			SNode addedNode = new SNode(null, element);
-			tmp.setNext(addedNode);
-			this.tail = addedNode;
-			this.size++;
-		}
+////		else if (this.size == 1) 
+////		{
+////			SNode addedNode = new SNode(null, element);
+////			this.head.setNext(addedNode);
+////			this.tail = addedNode;
+////			this.size++;
+////		} 
+//		else 
+//		{
+//			SNode tmp = this.tail;
+//			SNode addedNode = new SNode(null, element);
+//			tmp.setNext(addedNode);
+//			this.tail = addedNode;
+//			this.size++;
+//		}
+		
+		SNode addedNode = new SNode(null, element);
+		if(isEmpty())
+			this.head = addedNode;
+		else
+			this.tail.setNext(addedNode);
+		this.tail = addedNode;
+		this.size++;
 	}
 
 	@Override
