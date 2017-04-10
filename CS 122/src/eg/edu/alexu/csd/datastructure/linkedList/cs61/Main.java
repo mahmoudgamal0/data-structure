@@ -20,7 +20,7 @@ public class Main {
 		
 		
 		SLinkedList list = new SLinkedList();
-		
+		SLinkedList x = new SLinkedList();
 		
 		list.add(2);
 		list.add(3);
@@ -38,5 +38,7 @@ public class Main {
 		list.print();
 		list.add(6,7);
 		list.print();
+		x=(SLinkedList)list.sublist(4, 3);
+		x.print();
 	}
 }
