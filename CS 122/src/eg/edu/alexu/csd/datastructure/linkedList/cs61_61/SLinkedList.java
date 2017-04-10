@@ -241,7 +241,7 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if (fromIndex < 0 || fromIndex >= this.size || isEmpty())
+		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() ||toIndex >=this.size)
 		{
 			SLinkedList newList = new SLinkedList();
 			return newList;
