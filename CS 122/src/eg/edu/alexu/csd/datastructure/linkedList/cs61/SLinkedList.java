@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.datastructure.linkedList.cs61;
 
 import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
 
+
 public class SLinkedList implements ILinkedList{
 
 	
@@ -197,7 +198,7 @@ public class SLinkedList implements ILinkedList{
 		else
 		{
 			SNode temp = this.head;
-			for(int i = 0 ; i < index - 1 ; i++)
+			for(int i = 1 ; i < index - 1 ; i++)
 			{
 				temp = temp.getNext();
 			}
@@ -207,7 +208,10 @@ public class SLinkedList implements ILinkedList{
 				this.tail = temp;
 				temp.setNext(null);
 			}
-			temp.setNext(temp.getNext().getNext());
+			else
+			{
+				temp.setNext(temp.getNext().getNext());
+			}
 		}
 		this.size--;
 	}
@@ -255,4 +259,20 @@ public class SLinkedList implements ILinkedList{
 		return false;
 	}
 	
+	public void print()
+	{
+		if(isEmpty())
+		{
+			System.out.println("The List: ");
+			return;
+		}
+		SNode temp = this.head;
+		System.out.print("The list: ");
+		while(temp!=null)
+		{
+			System.out.print(temp.getValue() + " ");
+			temp=temp.getNext();
+		}
+		System.out.println();
+	}
 }
