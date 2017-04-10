@@ -36,12 +36,7 @@ public class Main {
 		list.print();
 		list.add(4,6);
 		list.print();
-		list.add(6,7);
+		list.add(5,7);
 		list.print();
-		x=(SLinkedList)list.sublist(4, 3);
-		x.print();
-		list.clear();
-		x=(SLinkedList)list.sublist(4, 3);
-		x.print();
 	}
 }
