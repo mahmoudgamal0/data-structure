@@ -28,6 +28,7 @@ public class SLinkedList implements ILinkedList{
 		{
 			SNode newNode = new SNode(this.head, element);
 			this.head = newNode;
+			this.size++;
 		}
 		else 
 		{
@@ -92,7 +93,7 @@ public class SLinkedList implements ILinkedList{
 		
 		if(isEmpty())
 			return null;
-		else if(index > this.size)
+		else if(index >= this.size)
 			return null;
 		else
 		{
@@ -122,7 +123,7 @@ public class SLinkedList implements ILinkedList{
 		
 		if(isEmpty())
 			return;
-		else if(index > this.size)
+		else if(index >= this.size)
 			return;
 		else
 		{
@@ -189,7 +190,7 @@ public class SLinkedList implements ILinkedList{
 		
 		if(isEmpty())
 			return;
-		else if(index > this.size)
+		else if(index >= this.size)
 			return;
 		else if(index == 0)
 		{
@@ -198,7 +199,7 @@ public class SLinkedList implements ILinkedList{
 		else
 		{
 			SNode temp = this.head;
-			for(int i = 1 ; i < index - 1 ; i++)
+			for(int i = 0 ; i < index - 1 ; i++)
 			{
 				temp = temp.getNext();
 			}
