@@ -24,6 +24,11 @@ public class SLinkedList implements ILinkedList{
 		{
 			this.add(element);
 		} 
+		else if(index == 0)
+		{
+			SNode newNode = new SNode(this.head, element);
+			this.head = newNode;
+		}
 		else 
 		{
 			SNode tmp = this.head;
