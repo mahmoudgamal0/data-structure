@@ -224,23 +224,25 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if(isEmpty())
+		if (fromIndex < 0 || fromIndex >= this.size || isEmpty())
 		{
-			return null;
-		}
-		if (fromIndex < 0 || fromIndex >= this.size)
-		{
+			SLinkedList newList = new SLinkedList();
 			return null;
 		}
 		else 
 		{
+			if(fromIndex > toIndex)
+				return null;
+			
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
 			for (int i = 0; i < fromIndex; i++) 
 			{
 				tmp = tmp.getNext();
 			}
-			for (int i = fromIndex; i <= toIndex; i++) {
+			
+			for (int i = fromIndex; i <= toIndex; i++) 
+			{
 				if(i > this.size - 1)
 					break;
 				newList.add(tmp.getValue());

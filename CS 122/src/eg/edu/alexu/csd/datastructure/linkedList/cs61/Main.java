@@ -40,5 +40,8 @@ public class Main {
 		list.print();
 		x=(SLinkedList)list.sublist(4, 3);
 		x.print();
+		list.clear();
+		x=(SLinkedList)list.sublist(4, 3);
+		x.print();
 	}
 }
