@@ -209,7 +209,7 @@ public class SLinkedList implements ILinkedList{
 			}
 			temp.setNext(temp.getNext().getNext());
 		}
-		
+		this.size--;
 	}
 
 	@Override
