@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.datastructure.linkedList.cs61;
+package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 public class PolyType {
 	

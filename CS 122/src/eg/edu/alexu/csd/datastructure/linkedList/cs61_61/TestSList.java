@@ -1,16 +1,13 @@
-package eg.edu.alexu.csd.datastructure.linkedList.cs61;
-
-
+package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 import org.junit.Assert;
 
-
-public class TestDList {
+public class TestSList {
 
 	@org.junit.Test
 	public void testAdd()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -20,10 +17,11 @@ public class TestDList {
 	@org.junit.Test
 	public void correctInsertion()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
+		list.add(30,50);
 		Assert.assertEquals(10, list.get(0));
 		Assert.assertEquals(30,list.get(list.size()-1));
 		Assert.assertEquals(null, list.get(list.size()));
@@ -32,7 +30,7 @@ public class TestDList {
 	@org.junit.Test
 	public void correctMiddleInsertion()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -49,7 +47,7 @@ public class TestDList {
 	@org.junit.Test
 	public void changeElement()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -65,7 +63,7 @@ public class TestDList {
 	@org.junit.Test
 	public void testSublist()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -73,7 +71,7 @@ public class TestDList {
 		list.add(2, 5);
 		list.add(3,15);
 		list.add(1,35);
-		DLinkedList x = (DLinkedList)list.sublist(3,5);
+		SLinkedList x = (SLinkedList)list.sublist(3,5);
 		Assert.assertEquals(x.size(),3);
 		Assert.assertEquals(5, list.get(3));
 		Assert.assertEquals(15, list.get(4));
@@ -83,7 +81,7 @@ public class TestDList {
 	@org.junit.Test
 	public void testDelete()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -100,7 +98,7 @@ public class TestDList {
 	@org.junit.Test
 	public void testContain()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -116,7 +114,7 @@ public class TestDList {
 	@org.junit.Test
 	public void testEmpty()
 	{
-		DLinkedList list = new DLinkedList();
+		SLinkedList list = new SLinkedList();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -128,5 +126,4 @@ public class TestDList {
 		Assert.assertNull(list.get(0));
 		Assert.assertEquals(0, list.size());
 	}
-
 }
