@@ -45,7 +45,8 @@ public class SLinkedList implements ILinkedList{
 	}
 
 	@Override
-	public void add(Object element) {
+	public void add(Object element)
+	{
 		if (this.isEmpty()) 
 		{
 			SNode addedNode = new SNode(null, element);
@@ -229,13 +230,15 @@ public class SLinkedList implements ILinkedList{
 		if (fromIndex < 0 || fromIndex >= this.size || isEmpty())
 		{
 			SLinkedList newList = new SLinkedList();
-			return null;
+			return newList;
 		}
 		else 
 		{
 			if(fromIndex > toIndex)
-				return null;
-			
+			{
+				SLinkedList newList = new SLinkedList();
+				return newList;
+			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
 			for (int i = 0; i < fromIndex; i++) 
