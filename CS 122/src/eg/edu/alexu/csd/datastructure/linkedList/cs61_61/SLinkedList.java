@@ -133,9 +133,9 @@ public class SLinkedList implements ILinkedList{
 //		}
 		
 		if(isEmpty())
-			return;
+			this.add(element);
 		else if(index >= this.size)
-			return;
+			this.add(element);
 		else
 		{
 			SNode temp = this.head;
@@ -241,7 +241,7 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() ||toIndex >=this.size)
+		if (fromIndex < 0 || fromIndex >= this.size || isEmpty())
 		{
 			SLinkedList newList = new SLinkedList();
 			return newList;
