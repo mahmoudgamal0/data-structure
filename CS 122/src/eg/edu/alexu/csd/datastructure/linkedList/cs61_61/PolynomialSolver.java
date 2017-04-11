@@ -5,13 +5,21 @@ import java.lang.Math;
 
 public class PolynomialSolver implements IPolynomialSolver {
 
-	private SLinkedList A = new SLinkedList();
-	private SLinkedList B = new SLinkedList();
-	private SLinkedList C = new SLinkedList();
-	private SLinkedList R = new SLinkedList();
+	public SLinkedList A = new SLinkedList();
+	public SLinkedList B = new SLinkedList();
+	public SLinkedList C = new SLinkedList();
+	public SLinkedList R = new SLinkedList();
+	private int numberOfSet = 0;
 	
 	public void setPolynomial(char poly, int[][] terms) 
 	{
+		if(poly == 'A' && this.isSet(this.A))
+			return;
+		else if(poly == 'B' && this.isSet(this.B))
+			return;
+		else if(poly == 'C' && this.isSet(this.C))
+			return;
+		
 		for(int i = 0 ; i < terms.length ; i++)
 		{
 			PolyType entry = new PolyType(terms[i][0] ,terms[i][1]);
@@ -24,6 +32,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 			else
 				break;
 		}
+		this.numberOfSet++;
 	}
 
 	public String print(char poly) 
@@ -36,20 +45,30 @@ public class PolynomialSolver implements IPolynomialSolver {
 		
 		else if(poly == 'C')
 			return toString(this.C);
+		else if(poly == 'R')
+			return toString(this.R);
 		else
-			return "";
+			return null;
 	}
 	
 	public void clearPolynomial(char poly)
 	{
-		if(poly == 'A')
+		if(poly == 'A' && this.isSet(this.A))
+		{
 			this.A = new SLinkedList();
-		
-		else if(poly == 'B')
+			this.numberOfSet--;
+		}
+		else if(poly == 'B' && this.isSet(this.B))
+		{
 			this.B = new SLinkedList();
-		
-		else if(poly == 'C')
+			this.numberOfSet--;
+		}
+		else if(poly == 'C' && this.isSet(this.C))
+		{
 			this.C = new SLinkedList();
+			this.numberOfSet--;
+		}
+			
 	}
 
 	public float evaluatePolynomial(char poly, float value) 
@@ -186,22 +205,56 @@ public class PolynomialSolver implements IPolynomialSolver {
 	
 	public int[][] multiply(char poly1, char poly2) 
 	{
+		SLinkedList listA = getList(poly1);
+		SLinkedList listB = getList(poly2);
+		if(listA == null || listB == null)
+			return null;
+		this.R = new SLinkedList();
 		
-		return null;
+		for(int i = 0 ; i < listA.size() ; i++)
+		{
+			SLinkedList temp = new SLinkedList();
+			for(int j = 0; j < listB.size()  ; j++)
+			{
+				PolyType product = new PolyType();
+				product.setCoeff( ((PolyType)listA.get(i)).getCoeff() * ((PolyType)listB.get(j)).getCoeff() );
+				product.setExpo( ((PolyType)listA.get(i)).getExpo() + ((PolyType)listB.get(j)).getExpo() );
+				temp.add(product);
+			}
+			int[][] result = this.add(this.R, temp);
+			this.R = toList(result);
+		}
+		
+		return this.toArray(this.R);
 	}
 
 	private String toString(SLinkedList poly)
 	{
-		if(poly == null)
+		if(!this.isSet(poly))
 			return null;
 		String polynomial = new String();
 		for(int i = 0; i < poly.size(); i++)
 		{	
 			if(((PolyType)poly.get(i)).getCoeff() > 0 && i!=0)
 				polynomial += "+";
-			polynomial += ((PolyType)poly.get(i)).getCoeff();
-			polynomial += "x^";
-			polynomial += ((PolyType)poly.get(i)).getExpo();
+			if(((PolyType)poly.get(i)).getCoeff() == 1)
+			{
+				
+			}
+			else if(((PolyType)poly.get(i)).getCoeff() == -1 && i+1 != poly.size())
+			{
+				polynomial += "-";
+			}
+			else
+				polynomial += ((PolyType)poly.get(i)).getCoeff();
+			if(((PolyType)poly.get(i)).getExpo() == 1)
+				polynomial += "x";
+			else if(((PolyType)poly.get(i)).getExpo() == 0)
+			{
+				
+			}
+			else
+				polynomial += "x^" + ((PolyType)poly.get(i)).getExpo();
 		}
 		return polynomial;
 	}
@@ -218,21 +271,23 @@ public class PolynomialSolver implements IPolynomialSolver {
 		return result;
 	}
 	
-	private SLinkedList getList(char poly)
+	public SLinkedList getList(char poly)
 	{
-		if(poly == 'A')
+		if(poly == 'A' && this.isSet(this.A))
 			return this.A;
 		
-		else if(poly == 'B')
+		else if(poly == 'B' && this.isSet(this.B))
 			return this.B;
 		
-		else if(poly == 'C')
+		else if(poly == 'C' && this.isSet(this.C))
 			return this.C;
+		else if(poly == 'R')
+			return this.R;
 		else
 			return null;
 	}
 
-	private boolean isSet(SLinkedList poly)
+	public boolean isSet(SLinkedList poly)
 	{
 		if(poly == this.A)
 		{
@@ -254,4 +309,76 @@ public class PolynomialSolver implements IPolynomialSolver {
 		}
 		return false;
 	}
+
+	private SLinkedList toList(int[][] terms)
+	{
+		SLinkedList temp = new SLinkedList();
+		for(int i = 0 ; i < terms.length ; i++)
+		{
+			PolyType entry = new PolyType(terms[i][0], terms[i][1]);
+			temp.add(entry);
+		}
+		return temp;
+	}
+
+	public int[][] add(SLinkedList poly1, SLinkedList poly2) 
+	{
+		SLinkedList listA = poly1;
+		SLinkedList listB = poly2;
+		
+		
+		SLinkedList temp = new SLinkedList();
+		
+		int i = 0, j = 0;
+		
+		while(listA.get(i) != null && listB.get(j) != null)
+		{	
+			PolyType entry = new PolyType();
+			if(((PolyType)listA.get(i)).getExpo()  == ((PolyType)listB.get(j)).getExpo())
+			{
+				entry.setCoeff(((PolyType)listA.get(i)).getCoeff() + ((PolyType)listB.get(j)).getCoeff());
+				entry.setExpo(((PolyType)listA.get(i)).getExpo());
+				temp.add(entry);
+				i++;
+				j++;
+			}
+			else if(((PolyType)listA.get(i)).getExpo()  > ((PolyType)listB.get(j)).getExpo())
+			{
+				entry.setCoeff(((PolyType)listA.get(i)).getCoeff());
+				entry.setExpo(((PolyType)listA.get(i)).getExpo());
+				temp.add(entry);
+				i++;
+			}
+			else
+			{
+				entry.setCoeff(((PolyType)listB.get(j)).getCoeff());
+				entry.setExpo(((PolyType)listB.get(j)).getExpo());
+				temp.add(entry);
+				j++;
+
+			}
+		}
+		
+		if(listA.get(i) != null)
+		{
+			for(int k = i ; k<listA.size(); k++)
+			{
+				PolyType entry = new PolyType(((PolyType)listA.get(k)).getCoeff(),((PolyType)listA.get(k)).getExpo());
+				temp.add(entry);
+			}
+		}
+		else
+		{
+			for(int k = j ; k<listB.size(); k++)
+			{
+				PolyType entry = new PolyType(((PolyType)listB.get(k)).getCoeff(),((PolyType)listB.get(k)).getExpo());
+				temp.add(entry);
+			}
+		}
+		
+		return toArray(temp);
+	}
+
+
+
 }
