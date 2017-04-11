@@ -232,5 +232,26 @@ public class PolynomialSolver implements IPolynomialSolver {
 			return null;
 	}
 
-
+	private boolean isSet(SLinkedList poly)
+	{
+		if(poly == this.A)
+		{
+			if(this.A.isEmpty())
+				return false;
+			return true;
+		}
+		else if(poly == this.B)
+		{
+			if(this.B.isEmpty())
+				return false;
+			return true;
+		}
+		else if(poly == this.C)
+		{
+			if(this.C.isEmpty())
+				return false;
+			return true;
+		}
+		return false;
+	}
 }

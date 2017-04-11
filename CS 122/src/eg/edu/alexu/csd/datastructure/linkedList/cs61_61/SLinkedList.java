@@ -47,29 +47,6 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(Object element)
 	{
-//		if (this.isEmpty()) 
-//		{
-//			SNode addedNode = new SNode(null, element);
-//			this.head = addedNode;
-//			this.tail = addedNode;
-//			this.size++;
-//		} 
-////		else if (this.size == 1) 
-////		{
-////			SNode addedNode = new SNode(null, element);
-////			this.head.setNext(addedNode);
-////			this.tail = addedNode;
-////			this.size++;
-////		} 
-//		else 
-//		{
-//			SNode tmp = this.tail;
-//			SNode addedNode = new SNode(null, element);
-//			tmp.setNext(addedNode);
-//			this.tail = addedNode;
-//			this.size++;
-//		}
-		
 		SNode addedNode = new SNode(null, element);
 		if(isEmpty())
 			this.head = addedNode;
@@ -81,26 +58,6 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public Object get(int index) {
-//		if (index > this.size - 1)
-//		{
-//			return null;
-//		} 
-//		else if (index == 0) 
-//		{
-//			return this.head.getValue();
-//		}
-//		else if (index == this.size - 1) 
-//		{
-//			return this.tail.getValue();
-//		} 
-//		else 
-//		{
-//			SNode tmp = this.head;
-//			for (int i = 0; i < index ; i++) {
-//				tmp = tmp.getNext();
-//			}
-//			return tmp.getValue();
-//		}
 		
 		if(isEmpty())
 			return (Object)null;
@@ -120,17 +77,6 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void set(int index, Object element) {
-//		if (index > this.size - 1 || this.size == 0) 
-//		{
-//
-//		} else {
-//			SNode tmp = this.head;
-//			for (int i = 0; i < index; i++) 
-//			{
-//				tmp = tmp.getNext();
-//			}
-//			tmp.setValue(element);
-//		}
 		
 		if(isEmpty())
 			this.add(element);
@@ -165,39 +111,6 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void remove(int index) {
-//		if (index > this.size - 1 || this.size == 0) 
-//			return;
-//		else if (index == 0) 
-//		{
-//			if (this.size == 1) 
-//			{
-//				this.clear();
-//			} 
-//			else 
-//			{
-//				SNode tmp = this.head;
-//				this.head = tmp.getNext();
-//				tmp.setNext(null);
-//				this.size--;
-//			}
-//		} 
-//		else 
-//		{
-//			SNode tmp = this.head;
-//			for (int i = 0; i < index - 1; i++) 
-//			{
-//				tmp = tmp.getNext();
-//			}
-//			SNode removedNode = tmp.getNext();
-//			if (this.tail == removedNode) 
-//			{
-//				this.tail = tmp;
-//			}
-//			tmp.setNext(removedNode.getNext());
-//			removedNode.setNext(null);
-//			this.size--;
-//
-//		}
 		
 		if(isEmpty())
 			return;
