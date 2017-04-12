@@ -21,10 +21,8 @@ public class TestSList {
 		list.add(10);
 		list.add(20);
 		list.add(30);
-		list.add(30,50);
 		Assert.assertEquals(10, list.get(0));
 		Assert.assertEquals(30,list.get(list.size()-1));
-		Assert.assertEquals(null, list.get(list.size()));
 	}
 	
 	@org.junit.Test
@@ -123,7 +121,7 @@ public class TestSList {
 		list.add(3,15);
 		list.add(1,35);
 		list.clear();
-		Assert.assertNull(list.get(0));
+		Assert.assertTrue(list.isEmpty());
 		Assert.assertEquals(0, list.size());
 	}
 }

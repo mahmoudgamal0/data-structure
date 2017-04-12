@@ -2,7 +2,6 @@ package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 import eg.edu.alexu.csd.datastructure.linkedList.IPolynomialSolver;
 import java.lang.Math;
-import java.util.Arrays;
 import java.lang.RuntimeException;
 public class PolynomialSolver implements IPolynomialSolver {
 
