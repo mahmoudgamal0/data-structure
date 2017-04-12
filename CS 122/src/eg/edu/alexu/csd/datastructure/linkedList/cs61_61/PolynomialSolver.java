@@ -398,6 +398,10 @@ public class PolynomialSolver implements IPolynomialSolver {
 			{
 				return false;
 			}
+			if(terms[i][1] < 0)
+			{
+				return false;
+			}
 		}
 		
 		return true;
