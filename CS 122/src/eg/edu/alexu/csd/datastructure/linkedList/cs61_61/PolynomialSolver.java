@@ -82,6 +82,9 @@ public class PolynomialSolver implements IPolynomialSolver {
 	public float evaluatePolynomial(char poly, float value) 
 	{
 		SLinkedList temp = getList(poly);
+		if(!(isSet(temp)))
+			throw new RuntimeException();
+		
 		float result = 0;
 		for(int i = 0; i < temp.size() ; i++)
 		{
