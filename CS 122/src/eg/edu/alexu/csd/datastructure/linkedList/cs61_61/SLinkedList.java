@@ -49,7 +49,7 @@ public class SLinkedList implements ILinkedList{
 	{
 		if(!isEmpty())
 		{
-			if(element.getClass() != this.head.getValue().getClass())
+			if(!element.getClass().equals(this.head.getValue().getClass()))
 				throw null;
 		}
 		SNode addedNode = new SNode(null, element);
