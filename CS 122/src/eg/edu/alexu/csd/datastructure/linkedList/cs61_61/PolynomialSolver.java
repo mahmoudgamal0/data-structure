@@ -61,10 +61,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		else
 			throw new RuntimeException();
 		
-		if(temp == null)
-			throw new RuntimeException();
-		else
-			return null;
+		return temp;
 	}
 	
 	public void clearPolynomial(char poly)
