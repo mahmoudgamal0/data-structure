@@ -357,8 +357,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listB = poly2;
 		
 		
-		if(!(isSet(listA) || isSet(listB)))
-			throw new RuntimeException();
+		
 			
 		SLinkedList temp = new SLinkedList();
 		
