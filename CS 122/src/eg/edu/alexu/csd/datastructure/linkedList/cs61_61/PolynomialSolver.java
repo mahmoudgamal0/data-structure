@@ -18,13 +18,13 @@ public class PolynomialSolver implements IPolynomialSolver {
 			throw new RuntimeException();
 		if(!(poly == 'A' || poly == 'B' || poly == 'C'))
 			throw new RuntimeException();
-		if(poly == 'A' && this.isSet(this.A))
-			throw new RuntimeException();
-		else if(poly == 'B' && this.isSet(this.B))
-			throw new RuntimeException();
-		else if(poly == 'C' && this.isSet(this.C))
-			throw new RuntimeException();
-		
+//		if(poly == 'A' && this.isSet(this.A))
+//			throw new RuntimeException();
+//		else if(poly == 'B' && this.isSet(this.B))
+//			throw new RuntimeException();
+//		else if(poly == 'C' && this.isSet(this.C))
+//			throw new RuntimeException();
+//		
 	
 		for(int i = 0 ; i < terms.length ; i++)
 		{
