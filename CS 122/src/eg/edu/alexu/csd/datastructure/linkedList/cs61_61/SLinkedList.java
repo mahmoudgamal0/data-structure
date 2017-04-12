@@ -59,7 +59,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		
-		if(isEmpty() || index >=this.size)
+		if(isEmpty() || index >=this.size || index < 0)
 			throw null;
 		else
 		{
@@ -76,7 +76,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void set(int index, Object element) {
 		
-		if(isEmpty() || index >= this.size)
+		if(isEmpty() || index >= this.size || index < 0)
 			throw null;
 		else
 		{
@@ -91,6 +91,8 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void clear() {
+		if(isEmpty())
+			throw null;
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
@@ -108,7 +110,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void remove(int index) {
 		
-		if(isEmpty() || index >= this.size)
+		if(isEmpty() || index >= this.size || index < 0)
 			throw null;
 		else if(index == 0)
 		{
@@ -180,7 +182,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public boolean contains(Object o) {
 		if (this.isEmpty()) {
-			return false;
+			throw null;
 		} else {
 			SNode tmp = this.head;
 			for (int i = 0; i < this.size; i++) {

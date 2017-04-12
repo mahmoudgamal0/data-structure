@@ -19,7 +19,7 @@ public class DLinkedList implements ILinkedList {
 	public void add(int index, Object element) 
 	{
 		if(index > this.size)
-			return;
+			throw null;
 		else if (index > this.size - 1) 
 		{
 			this.add(element);
@@ -74,9 +74,9 @@ public class DLinkedList implements ILinkedList {
 
 
 	public Object get(int index) {
-		if (index > this.size - 1) 
+		if (index > this.size - 1 || index < 0) 
 		{
-			return null;
+			throw null;
 		} 
 		else if (index == 0) 
 		{
@@ -100,8 +100,8 @@ public class DLinkedList implements ILinkedList {
 
 	
 	public void set(int index, Object element) {
-		if (index > this.size - 1 || this.size == 0) 
-			return;
+		if (index > this.size - 1 || this.size == 0 || index < 0) 
+			throw null;
 		else 
 		{
 			DNode tmp = this.header.getNext();
@@ -114,6 +114,8 @@ public class DLinkedList implements ILinkedList {
 
 	
 	public void clear() {
+		if(isEmpty())
+			throw null;
 		this.header.getNext().setPrevious(null);
 		this.trailer.getPrevious().setNext(null);
 		this.header.setNext(this.trailer);
@@ -136,8 +138,8 @@ public class DLinkedList implements ILinkedList {
 
 	
 	public void remove(int index) {
-		if (index > this.size - 1 || this.size == 0)
-			return;
+		if (index > this.size - 1 || this.size == 0 || index < 0)
+			throw null;
 		else 
 		{
 			DNode tmp = this.header.getNext();
@@ -158,13 +160,14 @@ public class DLinkedList implements ILinkedList {
 
 
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if (fromIndex < 0 || fromIndex > this.size - 1) 
+		if (fromIndex < 0 || fromIndex > this.size - 1  || isEmpty() || toIndex >= this.size) 
 		{
-			DLinkedList newList = new DLinkedList();
-			return newList;
+			throw null;
 		} 
 		else 
 		{
+			if(toIndex < fromIndex)
+				throw null;
 			DLinkedList newList = new DLinkedList();
 			DNode tmp = this.header.getNext();
 			for (int i = 0; i < fromIndex; i++) 
@@ -186,7 +189,7 @@ public class DLinkedList implements ILinkedList {
 	
 	public boolean contains(Object o) {
 		if (this.size == 0) {
-			return false;
+			throw null;
 		} else {
 			DNode tmp = this.header.getNext();
 			for (int i = 0; i < this.size; i++) {
