@@ -21,7 +21,7 @@ public class SLinkedList implements ILinkedList{
 	public void add(int index, Object element) {
 	
 		if(index > this.size)
-			return;
+			throw null;
 		if (index == this.size) 
 		{
 			this.add(element);
@@ -59,10 +59,8 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		
-		if(isEmpty())
-			return (Object)null;
-		else if(index >= this.size)
-			return null;
+		if(isEmpty() || index >=this.size)
+			throw null;
 		else
 		{
 			SNode temp = this.head;
@@ -78,10 +76,8 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void set(int index, Object element) {
 		
-		if(isEmpty())
-			this.add(element);
-		else if(index >= this.size)
-			this.add(element);
+		if(isEmpty() || index >= this.size)
+			throw null;
 		else
 		{
 			SNode temp = this.head;
@@ -112,10 +108,8 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void remove(int index) {
 		
-		if(isEmpty())
-			return;
-		else if(index >= this.size)
-			return;
+		if(isEmpty() || index >= this.size)
+			throw null;
 		else if(index == 0)
 		{
 			this.head = this.head.getNext();
@@ -154,17 +148,15 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if (fromIndex < 0 || fromIndex >= this.size || isEmpty())
+		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() || toIndex >= this.size)
 		{
-			SLinkedList newList = new SLinkedList();
-			return newList;
+			throw null;
 		}
 		else 
 		{
 			if(fromIndex > toIndex)
 			{
-				SLinkedList newList = new SLinkedList();
-				return newList;
+				throw null;
 			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
