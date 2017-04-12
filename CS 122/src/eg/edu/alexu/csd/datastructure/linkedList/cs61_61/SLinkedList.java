@@ -152,13 +152,13 @@ public class SLinkedList implements ILinkedList{
 	public ILinkedList sublist(int fromIndex, int toIndex) {
 		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() || toIndex >= this.size)
 		{
-			throw null;
+			return new SLinkedList();
 		}
 		else 
 		{
 			if(fromIndex > toIndex)
 			{
-				throw null;
+				return new SLinkedList();
 			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;

@@ -189,7 +189,7 @@ public class DLinkedList implements ILinkedList {
 	
 	public boolean contains(Object o) {
 		if (this.size == 0) {
-			throw null;
+			return false;
 		} else {
 			DNode tmp = this.header.getNext();
 			for (int i = 0; i < this.size; i++) {
