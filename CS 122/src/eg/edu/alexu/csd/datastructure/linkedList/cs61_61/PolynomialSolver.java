@@ -54,7 +54,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		else if(poly == 'R')
 			return toString(this.R);
 		else
-			return null;
+			throw new RuntimeException();
 	}
 	
 	public void clearPolynomial(char poly)
@@ -99,9 +99,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listB = getList(poly2);
 		
 		if(!(isSet(listA) || isSet(listB)))
-			throw null;
-		
-		
+			throw new RuntimeException();
 		this.R = new SLinkedList();
 		
 		int i = 0, j = 0;
@@ -161,7 +159,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listB = getList(poly2);
 		
 		if(!(isSet(listA) || isSet(listB)))
-			throw null;
+			throw new RuntimeException();
 		
 		this.R = new SLinkedList();
 		
@@ -221,7 +219,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listB = getList(poly2);
 		
 		if(!(isSet(listA) || isSet(listB)))
-			throw null;
+			throw new RuntimeException();
 		
 		this.R = new SLinkedList();
 		
@@ -244,8 +242,10 @@ public class PolynomialSolver implements IPolynomialSolver {
 
 	private String toString(SLinkedList poly)
 	{
-		if(!this.isSet(poly))
+		
+		if(poly.isEmpty())
 			throw new RuntimeException();
+		
 		String polynomial = new String();
 		for(int i = 0; i < poly.size(); i++)
 		{	
