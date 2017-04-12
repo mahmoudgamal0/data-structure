@@ -45,7 +45,7 @@ public class MainLoop {
 					System.out.println("Insert the second operand: A , B or C");
 					secondOperand = scanOperands(PS);
 				}
-				int[][] result = PS.add(firstOperand, secondOperand);
+				int[][] result = PS.add(Character.toUpperCase(firstOperand), Character.toUpperCase(secondOperand));
 
 				System.out.print("Result set in R: ");
 				for (int i = 0; i < result.length; i++) {
@@ -65,7 +65,7 @@ public class MainLoop {
 					System.out.println("Insert the second operand: A , B or C");
 					secondOperand = scanOperands(PS);
 				}
-				int[][] result = PS.subtract(firstOperand, secondOperand);
+				int[][] result = PS.subtract(Character.toUpperCase(firstOperand), Character.toUpperCase(secondOperand));
 
 				System.out.print("Result set in R: ");
 				for (int i = 0; i < result.length; i++) {
@@ -84,7 +84,7 @@ public class MainLoop {
 					System.out.println("Insert the second operand: A , B or C");
 					secondOperand = scanOperands(PS);
 				}
-				int[][] result = PS.multiply(firstOperand, secondOperand);
+				int[][] result = PS.multiply(Character.toUpperCase(firstOperand), Character.toUpperCase(secondOperand));
 
 				System.out.print("Result set in R: ");
 				for (int i = 0; i < result.length; i++) {

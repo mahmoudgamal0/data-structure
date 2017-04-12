@@ -95,7 +95,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		
 		int i = 0, j = 0;
 		
-		while(listA.get(i) != null && listB.get(j) != null)
+		while( i < listA.size() && j < listB.size())
 		{	
 			PolyType entry = new PolyType();
 			if(((PolyType)listA.get(i)).getExpo()  == ((PolyType)listB.get(j)).getExpo())
@@ -123,7 +123,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 			}
 		}
 		
-		if(listA.get(i) != null)
+		if(i < listA.size())
 		{
 			for(int k = i ; k<listA.size(); k++)
 			{
@@ -155,7 +155,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		
 		int i = 0, j = 0;
 		
-		while(listA.get(i) != null && listB.get(j) != null)
+		while(i < listA.size() && j < listB.size())
 		{	
 			PolyType entry = new PolyType();
 			if(((PolyType)listA.get(i)).getExpo()  == ((PolyType)listB.get(j)).getExpo())
@@ -183,7 +183,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 			}
 		}
 		
-		if(listA.get(i) != null)
+		if(i < listA.size())
 		{
 			for(int k = i ; k<listA.size(); k++)
 			{
@@ -236,14 +236,18 @@ public class PolynomialSolver implements IPolynomialSolver {
 		for(int i = 0; i < poly.size(); i++)
 		{	
 			if(((PolyType)poly.get(i)).getCoeff() > 0 && i!=0)
-				polynomial += "+";
-			if(((PolyType)poly.get(i)).getCoeff() == 1)
+				polynomial += " + ";
+			if(((PolyType)poly.get(i)).getCoeff() == 1 && ((PolyType)poly.get(i)).getExpo() == 0)
+			{
+				polynomial += " 1";
+			}
+			else if(((PolyType)poly.get(i)).getCoeff() == 1 )
 			{
 				
 			}
 			else if(((PolyType)poly.get(i)).getCoeff() == -1 && i+1 != poly.size())
 			{
-				polynomial += "-";
+				polynomial += " - ";
 			}
 			else
 				polynomial += ((PolyType)poly.get(i)).getCoeff();
@@ -307,6 +311,12 @@ public class PolynomialSolver implements IPolynomialSolver {
 				return false;
 			return true;
 		}
+		else if(poly == this.R)
+		{
+			if(this.R.isEmpty())
+				return false;
+			return true;
+		}
 		return false;
 	}
 
@@ -331,7 +341,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		
 		int i = 0, j = 0;
 		
-		while(listA.get(i) != null && listB.get(j) != null)
+		while(i < listA.size() && j < listB.size())
 		{	
 			PolyType entry = new PolyType();
 			if(((PolyType)listA.get(i)).getExpo()  == ((PolyType)listB.get(j)).getExpo())
