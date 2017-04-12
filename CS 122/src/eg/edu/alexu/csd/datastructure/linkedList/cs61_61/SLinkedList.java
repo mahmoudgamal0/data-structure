@@ -59,9 +59,10 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		
-		if(index >=this.size || index < 0)
-			throw null;
 		if(isEmpty())
+			throw null;
+		
+		if(index >= this.size || index < 0)
 			return null;
 		else
 		{
@@ -160,7 +161,7 @@ public class SLinkedList implements ILinkedList{
 		{
 			if(fromIndex > toIndex)
 			{
-				return null;
+				throw null;
 			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
@@ -197,20 +198,4 @@ public class SLinkedList implements ILinkedList{
 		return false;
 	}
 	
-	public void print()
-	{
-		if(isEmpty())
-		{
-			System.out.println("The List: ");
-			return;
-		}
-		SNode temp = this.head;
-		System.out.print("The list: ");
-		while(temp!=null)
-		{
-			System.out.print(temp.getValue() + " ");
-			temp=temp.getNext();
-		}
-		System.out.println();
-	}
 }
