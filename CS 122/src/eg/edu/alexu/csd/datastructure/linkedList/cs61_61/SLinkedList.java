@@ -59,11 +59,8 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		
-		if(isEmpty())
+		if(isEmpty() || index >= this.size || index < 0)
 			throw null;
-		
-		if(index >= this.size || index < 0)
-			return null;
 		else
 		{
 			SNode temp = this.head;
