@@ -169,7 +169,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		
 		if(listA.equals(listB))
 		{
-			int[][] terms = new int[0][0];
+			int[][] terms = {{0,0}};
 			return terms;
 		}
 		
