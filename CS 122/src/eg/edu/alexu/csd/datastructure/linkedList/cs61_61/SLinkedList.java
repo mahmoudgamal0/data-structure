@@ -182,7 +182,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public boolean contains(Object o) {
 		if (this.isEmpty()) {
-			throw null;
+			return false;
 		} else {
 			SNode tmp = this.head;
 			for (int i = 0; i < this.size; i++) {
