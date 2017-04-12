@@ -100,7 +100,8 @@ public class PolynomialSolver implements IPolynomialSolver {
 		
 		if(!(isSet(listA) || isSet(listB)))
 			throw new RuntimeException();
-		
+		if(listA.equals(listB))
+			throw new RuntimeException();
 		this.R = new SLinkedList();
 		
 		int i = 0, j = 0;
