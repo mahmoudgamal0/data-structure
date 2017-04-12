@@ -82,7 +82,6 @@ public class PolynomialSolver implements IPolynomialSolver {
 			this.numberOfSet--;
 		}
 		
-		throw new RuntimeException();
 			
 	}
 
