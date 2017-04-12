@@ -14,9 +14,10 @@ public class PolynomialSolver implements IPolynomialSolver {
 	
 	public void setPolynomial(char poly, int[][] terms) 
 	{
-		if(!this.sorted(terms) || poly != 'A' || poly != 'B' || poly != 'C')
+		if(!this.sorted(terms))
 			throw new RuntimeException();
-		
+		if(!(poly == 'A' || poly == 'B' || poly == 'C'))
+			throw new RuntimeException();
 		if(poly == 'A' && this.isSet(this.A))
 			throw new RuntimeException();
 		else if(poly == 'B' && this.isSet(this.B))
