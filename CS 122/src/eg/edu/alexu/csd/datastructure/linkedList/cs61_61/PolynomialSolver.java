@@ -167,10 +167,15 @@ public class PolynomialSolver implements IPolynomialSolver {
 		if(!(isSet(listA) || isSet(listB)))
 			throw new RuntimeException();
 		
+		if(listA.equals(listB))
+		{
+			int[][] terms = new int[0][0];
+			return terms;
+		}
+		
+		
 		this.R = new SLinkedList();
-		
 		int i = 0, j = 0;
-		
 		while(i < listA.size() && j < listB.size())
 		{	
 			PolyType entry = new PolyType();
@@ -356,9 +361,6 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listA = poly1;
 		SLinkedList listB = poly2;
 		
-		
-		
-			
 		SLinkedList temp = new SLinkedList();
 		
 		int i = 0, j = 0;
