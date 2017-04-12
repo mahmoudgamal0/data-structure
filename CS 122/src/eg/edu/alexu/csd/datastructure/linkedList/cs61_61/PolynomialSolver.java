@@ -98,9 +98,9 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listA = getList(poly1);
 		SLinkedList listB = getList(poly2);
 		
-//		if(!(isSet(listA) || isSet(listB)))
-//			throw new RuntimeException();
-//		
+		if(!(isSet(listA) || isSet(listB)))
+			throw null;
+		
 		
 		this.R = new SLinkedList();
 		
@@ -161,7 +161,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listB = getList(poly2);
 		
 		if(!(isSet(listA) || isSet(listB)))
-			throw new RuntimeException();
+			throw null;
 		
 		this.R = new SLinkedList();
 		
@@ -221,7 +221,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listB = getList(poly2);
 		
 		if(!(isSet(listA) || isSet(listB)))
-			throw new RuntimeException();
+			throw null;
 		
 		this.R = new SLinkedList();
 		
