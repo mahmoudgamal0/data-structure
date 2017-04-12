@@ -62,7 +62,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 			throw new RuntimeException();
 		
 		if(temp == null)
-			throw null;
+			throw new RuntimeException();
 		else
 			return null;
 	}
