@@ -47,11 +47,6 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(Object element)
 	{
-		if(!isEmpty())
-		{
-			if(!element.getClass().equals(this.head.getValue().getClass()))
-				throw null;
-		}
 		SNode addedNode = new SNode(null, element);
 		if(isEmpty())
 			this.head = addedNode;
@@ -161,7 +156,7 @@ public class SLinkedList implements ILinkedList{
 		}
 		else 
 		{
-			if(fromIndex > toIndex)
+			if(fromIndex >= toIndex)
 			{
 				throw null;
 			}
