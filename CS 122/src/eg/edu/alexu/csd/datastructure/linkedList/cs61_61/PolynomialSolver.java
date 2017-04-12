@@ -278,13 +278,13 @@ public class PolynomialSolver implements IPolynomialSolver {
 	
 	public SLinkedList getList(char poly)
 	{
-		if(poly == 'A' && this.isSet(this.A))
+		if(poly == 'A')
 			return this.A;
 		
-		else if(poly == 'B' && this.isSet(this.B))
+		else if(poly == 'B')
 			return this.B;
 		
-		else if(poly == 'C' && this.isSet(this.C))
+		else if(poly == 'C')
 			return this.C;
 		else if(poly == 'R')
 			return this.R;
@@ -394,7 +394,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 	{
 		for(int i = 0 ; i < terms.length; i++)
 		{
-			if(terms[i][1] <= terms[i+1][1] && i+1 != terms.length)
+			if(i+1 != terms.length && terms[i][1] <= terms[i+1][1])
 			{
 				return false;
 			}
