@@ -74,7 +74,7 @@ public class DLinkedList implements ILinkedList {
 
 
 	public Object get(int index) {
-		if (index > this.size - 1 || index < 0) 
+		if (index > this.size - 1 || index < 0 || isEmpty()) 
 		{
 			throw null;
 		} 

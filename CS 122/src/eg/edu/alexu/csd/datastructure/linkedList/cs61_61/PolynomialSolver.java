@@ -2,7 +2,8 @@ package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 import eg.edu.alexu.csd.datastructure.linkedList.IPolynomialSolver;
 import java.lang.Math;
-
+import java.util.Arrays;
+import java.lang.RuntimeException;
 public class PolynomialSolver implements IPolynomialSolver {
 
 	public SLinkedList A = new SLinkedList();
@@ -13,13 +14,17 @@ public class PolynomialSolver implements IPolynomialSolver {
 	
 	public void setPolynomial(char poly, int[][] terms) 
 	{
-		if(poly == 'A' && this.isSet(this.A))
-			return;
-		else if(poly == 'B' && this.isSet(this.B))
-			return;
-		else if(poly == 'C' && this.isSet(this.C))
-			return;
+		if(!this.sorted(terms) || poly != 'A' || poly != 'B' || poly != 'C')
+			throw new RuntimeException();
 		
+//		if(poly == 'A' && this.isSet(this.A))
+//			return;
+//		else if(poly == 'B' && this.isSet(this.B))
+//			return;
+//		else if(poly == 'C' && this.isSet(this.C))
+//			return;
+		
+	
 		for(int i = 0 ; i < terms.length ; i++)
 		{
 			PolyType entry = new PolyType(terms[i][0] ,terms[i][1]);
@@ -74,8 +79,6 @@ public class PolynomialSolver implements IPolynomialSolver {
 	public float evaluatePolynomial(char poly, float value) 
 	{
 		SLinkedList temp = getList(poly);
-		if(temp == null)
-			return 0;
 		float result = 0;
 		for(int i = 0; i < temp.size() ; i++)
 		{
@@ -89,8 +92,6 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listA = getList(poly1);
 		SLinkedList listB = getList(poly2);
 		
-		if(listA == null || listB == null)
-			return null;
 		this.R = new SLinkedList();
 		
 		int i = 0, j = 0;
@@ -149,8 +150,6 @@ public class PolynomialSolver implements IPolynomialSolver {
 		SLinkedList listA = getList(poly1);
 		SLinkedList listB = getList(poly2);
 		
-		if(listA == null || listB == null)
-			return null;
 		this.R = new SLinkedList();
 		
 		int i = 0, j = 0;
@@ -207,8 +206,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 	{
 		SLinkedList listA = getList(poly1);
 		SLinkedList listB = getList(poly2);
-		if(listA == null || listB == null)
-			return null;
+		
 		this.R = new SLinkedList();
 		
 		for(int i = 0 ; i < listA.size() ; i++)
@@ -231,7 +229,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 	private String toString(SLinkedList poly)
 	{
 		if(!this.isSet(poly))
-			return null;
+			throw new RuntimeException();
 		String polynomial = new String();
 		for(int i = 0; i < poly.size(); i++)
 		{	
@@ -288,7 +286,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 		else if(poly == 'R')
 			return this.R;
 		else
-			return null;
+			throw new RuntimeException();
 	}
 
 	public boolean isSet(SLinkedList poly)
@@ -389,6 +387,17 @@ public class PolynomialSolver implements IPolynomialSolver {
 		return toArray(temp);
 	}
 
-
+	public boolean sorted(int[][] terms)
+	{
+		for(int i = 0 ; i < terms.length; i++)
+		{
+			if(terms[i][1] <= terms[i+1][1] && i+1 != terms.length)
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 }
