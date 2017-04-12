@@ -59,17 +59,17 @@ public class PolynomialSolver implements IPolynomialSolver {
 	
 	public void clearPolynomial(char poly)
 	{
-		if(poly == 'A' && this.isSet(this.A))
+		if(poly == 'A')
 		{
 			this.A = new SLinkedList();
 			this.numberOfSet--;
 		}
-		else if(poly == 'B' && this.isSet(this.B))
+		else if(poly == 'B' )
 		{
 			this.B = new SLinkedList();
 			this.numberOfSet--;
 		}
-		else if(poly == 'C' && this.isSet(this.C))
+		else if(poly == 'C' )
 		{
 			this.C = new SLinkedList();
 			this.numberOfSet--;
