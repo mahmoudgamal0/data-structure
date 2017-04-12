@@ -59,7 +59,9 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		
-		if(isEmpty() || index >= this.size || index < 0)
+		if(index >= this.size)
+			return null;
+		if(isEmpty() || index < 0)
 			throw null;
 		else
 		{
@@ -152,13 +154,13 @@ public class SLinkedList implements ILinkedList{
 	public ILinkedList sublist(int fromIndex, int toIndex) {
 		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() || toIndex >= this.size)
 		{
-			return new SLinkedList();
+			throw null;
 		}
 		else 
 		{
 			if(fromIndex > toIndex)
 			{
-				return new SLinkedList();
+				throw null;
 			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
