@@ -59,7 +59,9 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public Object get(int index) {
 		
-		if(isEmpty() || index >=this.size || index < 0)
+		if(index >=this.size || index < 0)
+			throw null;
+		if(isEmpty())
 			return null;
 		else
 		{
