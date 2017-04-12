@@ -43,18 +43,28 @@ public class PolynomialSolver implements IPolynomialSolver {
 
 	public String print(char poly) 
 	{
+		
+		String temp;
+		
 		if(poly == 'A')
-			return toString(this.A);
+			temp = toString(this.A);
 		
 		else if(poly == 'B')
-			return toString(this.B);
+			temp = toString(this.B);
 		
 		else if(poly == 'C')
-			return toString(this.C);
+			temp = toString(this.C);
+		
 		else if(poly == 'R')
-			return toString(this.R);
+			temp = toString(this.R);
+		
 		else
 			throw new RuntimeException();
+		
+		if(temp == null)
+			throw null;
+		else
+			return null;
 	}
 	
 	public void clearPolynomial(char poly)
@@ -244,7 +254,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 	{
 		
 		if(poly.isEmpty())
-			throw new RuntimeException();
+			return null;
 		
 		String polynomial = new String();
 		for(int i = 0; i < poly.size(); i++)
