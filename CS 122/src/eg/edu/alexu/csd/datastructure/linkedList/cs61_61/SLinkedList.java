@@ -60,7 +60,7 @@ public class SLinkedList implements ILinkedList{
 	public Object get(int index) {
 		
 		if(isEmpty() || index >=this.size || index < 0)
-			throw null;
+			return null;
 		else
 		{
 			SNode temp = this.head;
