@@ -160,7 +160,7 @@ public class SLinkedList implements ILinkedList{
 		{
 			if(fromIndex > toIndex)
 			{
-				throw null;
+				return null;
 			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
