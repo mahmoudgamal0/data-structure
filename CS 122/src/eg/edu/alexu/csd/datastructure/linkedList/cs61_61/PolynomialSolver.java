@@ -391,7 +391,7 @@ public class PolynomialSolver implements IPolynomialSolver {
 			}
 		}
 		
-		if(listA.get(i) != null)
+		if(i < listA.size())
 		{
 			for(int k = i ; k<listA.size(); k++)
 			{
