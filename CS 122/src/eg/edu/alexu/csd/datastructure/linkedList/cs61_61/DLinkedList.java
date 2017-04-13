@@ -8,42 +8,31 @@ public class DLinkedList implements ILinkedList {
 	private DNode header;
 	private DNode trailer;
 
-	public DLinkedList() 
-	{
+	public DLinkedList() {
 		this.size = 0;
 		this.header = new DNode(null, null, null);
 		this.trailer = new DNode(header, null, null);
 		this.header.setNext(this.trailer);
 	}
 
-	public void add(int index, Object element) 
-	{
-		if(index > this.size || index < 0)
+	public void add(int index, Object element) {
+		if (index > this.size || index < 0)
 			throw null;
-		else if (index > this.size - 1) 
-		{
+		else if (index > this.size - 1) {
 			this.add(element);
-		} 
-		else if (index == 0) 
-		{
-			if (this.size == 0) 
-			{
+		} else if (index == 0) {
+			if (this.size == 0) {
 				this.add(element);
-			} 
-			else 
-			{
+			} else {
 				DNode tmp = this.header.getNext();
 				DNode addedNode = new DNode(this.header, tmp, element);
 				this.header.setNext(addedNode);
 				tmp.setPrevious(addedNode);
 				this.size++;
 			}
-		} 
-		else 
-		{
+		} else {
 			DNode tmp = this.header.getNext();
-			for (int i = 0; i <index; i++) 
-			{
+			for (int i = 0; i < index; i++) {
 				tmp = tmp.getNext();
 			}
 			DNode addedNode = new DNode(tmp.getPrevious(), tmp, element);
@@ -54,56 +43,42 @@ public class DLinkedList implements ILinkedList {
 	}
 
 	public void add(Object element) {
-		if (this.size == 0) 
-		{
+		if (this.size == 0) {
 			DNode addedNode = new DNode(this.header, this.trailer, element);
 			this.header.setNext(addedNode);
 			this.trailer.setPrevious(addedNode);
 			this.size++;
-		} 
-		else 
-		{
+		} else {
 			DNode tmp = this.trailer.getPrevious();
 			DNode addedNode = new DNode(tmp, this.trailer, element);
 			tmp.setNext(addedNode);
 			this.trailer.setPrevious(addedNode);
 			this.size++;
 		}
-		
+
 	}
 
-
 	public Object get(int index) {
-		if (index > this.size - 1 || index < 0 || isEmpty()) 
-		{
+		if (index > this.size - 1 || index < 0 || isEmpty()) {
 			throw null;
-		} 
-		else if (index == 0) 
-		{
+		} else if (index == 0) {
 			return this.header.getNext().getValue();
-		}
-		else if (index == this.size - 1) 
-		{
+		} else if (index == this.size - 1) {
 			return this.trailer.getPrevious().getValue();
-		} 
-		else 
-		{
+		} else {
 			DNode tmp = this.header.getNext();
-			for (int i = 0; i < index; i++) 
-			{
+			for (int i = 0; i < index; i++) {
 				tmp = tmp.getNext();
 			}
 			return tmp.getValue();
 		}
-		
+
 	}
 
-	
 	public void set(int index, Object element) {
-		if (index > this.size - 1 || this.size == 0 || index < 0) 
+		if (index > this.size - 1 || this.size == 0 || index < 0)
 			throw null;
-		else 
-		{
+		else {
 			DNode tmp = this.header.getNext();
 			for (int i = 0; i < index; i++) {
 				tmp = tmp.getNext();
@@ -112,9 +87,8 @@ public class DLinkedList implements ILinkedList {
 		}
 	}
 
-	
 	public void clear() {
-		if(isEmpty())
+		if (isEmpty())
 			throw null;
 		this.header.getNext().setPrevious(null);
 		this.trailer.getPrevious().setNext(null);
@@ -123,25 +97,18 @@ public class DLinkedList implements ILinkedList {
 		this.size = 0;
 	}
 
-
-	public boolean isEmpty() 
-	{
-		if (this.size == 0) 
-		{
+	public boolean isEmpty() {
+		if (this.size == 0) {
 			return true;
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 	}
 
-	
 	public void remove(int index) {
 		if (index > this.size - 1 || this.size == 0 || index < 0)
 			throw null;
-		else 
-		{
+		else {
 			DNode tmp = this.header.getNext();
 			for (int i = 0; i < index; i++) {
 				tmp = tmp.getNext();
@@ -152,31 +119,23 @@ public class DLinkedList implements ILinkedList {
 		}
 	}
 
-	
-	public int size() 
-	{
+	public int size() {
 		return this.size;
 	}
 
-
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if (fromIndex < 0 || fromIndex > this.size - 1  || isEmpty() || toIndex >= this.size) 
-		{
+		if (fromIndex < 0 || fromIndex > this.size - 1 || isEmpty() || toIndex >= this.size) {
 			throw null;
-		} 
-		else 
-		{
-			if(toIndex < fromIndex)
+		} else {
+			if (toIndex < fromIndex)
 				throw null;
 			DLinkedList newList = new DLinkedList();
 			DNode tmp = this.header.getNext();
-			for (int i = 0; i < fromIndex; i++) 
-			{
+			for (int i = 0; i < fromIndex; i++) {
 				tmp = tmp.getNext();
 			}
-			for (int i = fromIndex; i <= toIndex; i++) 
-			{
-				if(i > this.size - 1)
+			for (int i = fromIndex; i <= toIndex; i++) {
+				if (i > this.size - 1)
 					break;
 				newList.add(tmp.getValue());
 				tmp = tmp.getNext();
@@ -186,7 +145,6 @@ public class DLinkedList implements ILinkedList {
 
 	}
 
-	
 	public boolean contains(Object o) {
 		if (this.size == 0) {
 			return false;
@@ -201,6 +159,5 @@ public class DLinkedList implements ILinkedList {
 		}
 		return false;
 	}
-	
-	
+
 }

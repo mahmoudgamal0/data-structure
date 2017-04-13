@@ -1,7 +1,7 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 public class DNode {
-	
+
 	private DNode nextNode;
 	private DNode previousNode;
 	private Object element;

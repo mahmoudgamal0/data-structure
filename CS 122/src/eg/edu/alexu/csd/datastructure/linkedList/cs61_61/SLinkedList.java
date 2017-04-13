@@ -2,16 +2,13 @@ package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
 
+public class SLinkedList implements ILinkedList {
 
-public class SLinkedList implements ILinkedList{
-
-	
 	private int size;
 	private SNode head;
 	private SNode tail;
 
-	public SLinkedList() 
-	{
+	public SLinkedList() {
 		this.size = 0;
 		this.tail = null;
 		this.head = null;
@@ -19,21 +16,16 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void add(int index, Object element) {
-	
-		if(index > this.size || index < 0)
+
+		if (index > this.size || index < 0)
 			throw null;
-		if (index == this.size) 
-		{
+		if (index == this.size) {
 			this.add(element);
-		} 
-		else if(index == 0)
-		{
+		} else if (index == 0) {
 			SNode newNode = new SNode(this.head, element);
 			this.head = newNode;
 			this.size++;
-		}
-		else 
-		{
+		} else {
 			SNode tmp = this.head;
 			for (int i = 0; i < index - 1; i++) {
 				tmp = tmp.getNext();
@@ -45,10 +37,9 @@ public class SLinkedList implements ILinkedList{
 	}
 
 	@Override
-	public void add(Object element)
-	{
+	public void add(Object element) {
 		SNode addedNode = new SNode(null, element);
-		if(isEmpty())
+		if (isEmpty())
 			this.head = addedNode;
 		else
 			this.tail.setNext(addedNode);
@@ -58,31 +49,27 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public Object get(int index) {
-		
-		if(isEmpty() || index >= this.size || index < 0)
+
+		if (isEmpty() || index >= this.size || index < 0)
 			throw null;
-		else
-		{
+		else {
 			SNode temp = this.head;
-			for(int i = 0 ; i < index ; i++)
-			{
+			for (int i = 0; i < index; i++) {
 				temp = temp.getNext();
 			}
 			return temp.getValue();
 		}
-		
+
 	}
 
 	@Override
 	public void set(int index, Object element) {
-		
-		if(isEmpty() || index >= this.size || index < 0)
+
+		if (isEmpty() || index >= this.size || index < 0)
 			throw null;
-		else
-		{
+		else {
 			SNode temp = this.head;
-			for(int i = 0 ; i < index ; i++)
-			{
+			for (int i = 0; i < index; i++) {
 				temp = temp.getNext();
 			}
 			temp.setValue(element);
@@ -91,7 +78,7 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void clear() {
-		if(isEmpty())
+		if (isEmpty())
 			throw null;
 		this.head = null;
 		this.tail = null;
@@ -109,38 +96,30 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public void remove(int index) {
-		
-		if(isEmpty() || index >= this.size || index < 0)
+
+		if (isEmpty() || index >= this.size || index < 0)
 			throw null;
-		else if(index == 0)
-		{
+		else if (index == 0) {
 			this.head = this.head.getNext();
 			this.size--;
-			if(isEmpty())
-			{
+			if (isEmpty()) {
 				this.tail = null;
 			}
-		}
-		else
-		{
+		} else {
 			SNode temp = this.head;
-			for(int i = 0 ; i < index - 1 ; i++)
-			{
+			for (int i = 0; i < index - 1; i++) {
 				temp = temp.getNext();
 			}
-			
-			if(temp.getNext() == this.tail)
-			{
+
+			if (temp.getNext() == this.tail) {
 				this.tail = temp;
 				temp.setNext(null);
-			}
-			else
-			{
+			} else {
 				temp.setNext(temp.getNext().getNext());
 			}
 			this.size--;
 		}
-		
+
 	}
 
 	@Override
@@ -150,25 +129,19 @@ public class SLinkedList implements ILinkedList{
 
 	@Override
 	public ILinkedList sublist(int fromIndex, int toIndex) {
-		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() || toIndex >= this.size)
-		{
+		if (fromIndex < 0 || fromIndex >= this.size || isEmpty() || toIndex >= this.size) {
 			throw null;
-		}
-		else 
-		{
-			if(fromIndex >= toIndex)
-			{
+		} else {
+			if (fromIndex >= toIndex) {
 				throw null;
 			}
 			SLinkedList newList = new SLinkedList();
 			SNode tmp = this.head;
-			for (int i = 0; i < fromIndex; i++) 
-			{
+			for (int i = 0; i < fromIndex; i++) {
 				tmp = tmp.getNext();
 			}
-			
-			for (int i = fromIndex; i <= toIndex; i++) 
-			{
+
+			for (int i = fromIndex; i <= toIndex; i++) {
 				newList.add(tmp.getValue());
 				tmp = tmp.getNext();
 			}
@@ -192,5 +165,5 @@ public class SLinkedList implements ILinkedList{
 		}
 		return false;
 	}
-	
+
 }

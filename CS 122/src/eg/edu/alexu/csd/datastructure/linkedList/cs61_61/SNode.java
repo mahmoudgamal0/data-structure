@@ -1,7 +1,7 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
 
 public class SNode {
-	
+
 	private SNode nextNode;
 	private Object element;
 

@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class MainLoop {
 
-	
 	static Scanner scanUserChoice = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -16,14 +15,14 @@ public class MainLoop {
 				System.out.println("Insert the variable name: A , B or C");
 				char polynomial = scanPolynomial();
 				if (PS.isSet(PS.getList(polynomial))) {
-						System.out.println("This variable is already set");
+					System.out.println("This variable is already set");
 				} else {
-						String userEntry = scanUserChoice.nextLine();
-						userEntry = scanUserChoice.nextLine();
-						int[][] terms = setArray(userEntry);
-						PS.setPolynomial(polynomial, terms);
+					String userEntry = scanUserChoice.nextLine();
+					userEntry = scanUserChoice.nextLine();
+					int[][] terms = setArray(userEntry);
+					PS.setPolynomial(polynomial, terms);
 				}
-	 			System.out.println("===============================================================");
+				System.out.println("===============================================================");
 			} else if (userChoice == 2) {
 				System.out.println("Insert the variable name: A , B , C or R");
 				char polynomial = scanPolynomialWithR();
@@ -204,7 +203,7 @@ public class MainLoop {
 		}
 		return operand;
 	}
-	
+
 	private static int[][] setArray(String userEntry) {
 		int numberOfTerms = 0;
 		for (int j = 0; j < userEntry.length(); j++) {
@@ -215,17 +214,17 @@ public class MainLoop {
 		int[][] terms = new int[numberOfTerms][2];
 		int counter = 0;
 		for (int i = 0; i < userEntry.length(); i++) {
-			if(userEntry.charAt(i)== '(' ) {
+			if (userEntry.charAt(i) == '(') {
 				String tmp = "";
 				i++;
-				while(Character.isDigit(userEntry.charAt(i)) || userEntry.charAt(i) == '-'){
+				while (Character.isDigit(userEntry.charAt(i)) || userEntry.charAt(i) == '-') {
 					tmp += userEntry.charAt(i);
 					i++;
 				}
 				terms[counter][0] = Integer.parseInt(tmp);
-				i+=2;
+				i += 2;
 				tmp = "";
-				while(Character.isDigit(userEntry.charAt(i)) || userEntry.charAt(i) == '-'){
+				while (Character.isDigit(userEntry.charAt(i)) || userEntry.charAt(i) == '-') {
 					tmp += userEntry.charAt(i);
 					i++;
 				}
@@ -234,6 +233,5 @@ public class MainLoop {
 		}
 		return terms;
 	}
-	
-	
+
 }
