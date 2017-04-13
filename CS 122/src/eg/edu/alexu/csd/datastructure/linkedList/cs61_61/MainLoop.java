@@ -12,28 +12,48 @@ public class MainLoop {
 			menu();
 			int userChoice = scanChoice();
 			if (userChoice == 1) {
+				if (PS.getNumberOfSet() == 3 ) {
+					System.out.println("all of the variables are set");
+					continue;
+				}
 				System.out.println("Insert the variable name: A , B or C");
 				char polynomial = scanPolynomial();
-				if (PS.isSet(PS.getList(polynomial))) {
+				if (PS.isSet(PS.getList(Character.toUpperCase(polynomial)))) {
 					System.out.println("This variable is already set");
 				} else {
+					System.out.println("Insert the polynomial terms in the form :eff1 , exponent1 ), (coeff2 , exponent2 ), ..");
 					String userEntry = scanUserChoice.nextLine();
 					userEntry = scanUserChoice.nextLine();
 					int[][] terms = setArray(userEntry);
-					PS.setPolynomial(polynomial, terms);
+					try {
+						PS.setPolynomial(Character.toUpperCase(polynomial), terms);
+					}
+					catch (Exception e)
+					{
+						System.out.println("Invaild entry please try  again");
+					}
+					
 				}
 				System.out.println("===============================================================");
 			} else if (userChoice == 2) {
+				if (PS.getNumberOfSet() < 2) {
+					System.out.println("not enough number of variables set");
+					continue;
+				}
 				System.out.println("Insert the variable name: A , B , C or R");
 				char polynomial = scanPolynomialWithR();
 				String printedPoly = PS.print(Character.toUpperCase(polynomial));
 				if (printedPoly == null) {
 					System.out.println("This variable is not set");
 				} else {
-					System.out.println(polynomial + " Value in " + polynomial + ": " + printedPoly);
+					System.out.println(Character.toUpperCase(polynomial) + " Value in " + Character.toUpperCase(polynomial) + ": " + printedPoly);
 				}
 				System.out.println("===============================================================");
 			} else if (userChoice == 3) {
+				if (PS.getNumberOfSet() < 2) {
+					System.out.println("not enough number of variables set");
+					continue;
+				}
 				char firstOperand = 0;
 				while (firstOperand == 0) {
 					System.out.println("Insert the first operand: A , B or C");
@@ -54,6 +74,10 @@ public class MainLoop {
 
 				System.out.println("===============================================================");
 			} else if (userChoice == 4) {
+				if (PS.getNumberOfSet() < 2) {
+					System.out.println("not enough number of variables set");
+					continue;
+				}
 				char firstOperand = 0;
 				while (firstOperand == 0) {
 					System.out.println("Insert the first operand: A , B or C");
@@ -73,6 +97,10 @@ public class MainLoop {
 				System.out.println();
 				System.out.println("===============================================================");
 			} else if (userChoice == 5) {
+				if (PS.getNumberOfSet() < 2) {
+					System.out.println("not enough number of variables set");
+					continue;
+				}
 				char firstOperand = 0;
 				while (firstOperand == 0) {
 					System.out.println("Insert the first operand: A , B or C");
@@ -92,6 +120,10 @@ public class MainLoop {
 				System.out.println();
 				System.out.println("===============================================================");
 			} else if (userChoice == 6) {
+				if (PS.getNumberOfSet() < 1) {
+					System.out.println("not enough number of variables set");
+					continue;
+				}
 				System.out.println("Insert the variable name: A , B , C or R");
 				char polynomial = scanPolynomialWithR();
 
@@ -104,6 +136,10 @@ public class MainLoop {
 				}
 				System.out.println("===============================================================");
 			} else if (userChoice == 7) {
+				if (PS.getNumberOfSet() < 1) {
+					System.out.println("not enough number of variables set");
+					continue;
+				}
 				System.out.println("Insert the variable name: A , B , C or R");
 				char polynomial = scanPolynomialWithR();
 				PS.clearPolynomial(polynomial);

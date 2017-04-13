@@ -315,10 +315,8 @@ public class PolynomialSolver implements IPolynomialSolver {
 				entry.setExpo(((PolyType) listB.get(j)).getExpo());
 				temp.add(entry);
 				j++;
-
 			}
 		}
-
 		if (i < listA.size()) {
 			for (int k = i; k < listA.size(); k++) {
 				PolyType entry = new PolyType(((PolyType) listA.get(k)).getCoeff(),
@@ -332,7 +330,6 @@ public class PolynomialSolver implements IPolynomialSolver {
 				temp.add(entry);
 			}
 		}
-
 		return toArray(temp);
 	}
 
@@ -345,8 +342,10 @@ public class PolynomialSolver implements IPolynomialSolver {
 				return false;
 			}
 		}
-
 		return true;
 	}
-
+	public int getNumberOfSet()
+	{
+		return this.numberOfSet;
+	}
 }
