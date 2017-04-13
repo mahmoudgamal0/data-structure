@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.datastructure.linkedList.cs61_61;
+package eg.edu.alexu.csd.datastructure.linkedList.cs61_35;
 
 import org.junit.Assert;
 
