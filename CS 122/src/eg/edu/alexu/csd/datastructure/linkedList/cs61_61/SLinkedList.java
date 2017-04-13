@@ -169,9 +169,7 @@ public class SLinkedList implements ILinkedList{
 			
 			for (int i = fromIndex; i <= toIndex; i++) 
 			{
-				if(i > this.size - 1)
-					break;
-				newList.add(tmp.getValue());
+				newList.add(tmp);
 				tmp = tmp.getNext();
 			}
 			return newList;
