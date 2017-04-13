@@ -169,7 +169,7 @@ public class SLinkedList implements ILinkedList{
 			
 			for (int i = fromIndex; i <= toIndex; i++) 
 			{
-				newList.add(tmp);
+				newList.add(tmp.getValue());
 				tmp = tmp.getNext();
 			}
 			return newList;
