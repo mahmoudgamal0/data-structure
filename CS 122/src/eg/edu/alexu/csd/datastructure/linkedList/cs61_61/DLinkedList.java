@@ -18,7 +18,7 @@ public class DLinkedList implements ILinkedList {
 
 	public void add(int index, Object element) 
 	{
-		if(index > this.size)
+		if(index > this.size || index < 0)
 			throw null;
 		else if (index > this.size - 1) 
 		{

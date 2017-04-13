@@ -20,7 +20,7 @@ public class SLinkedList implements ILinkedList{
 	@Override
 	public void add(int index, Object element) {
 	
-		if(index > this.size)
+		if(index > this.size || index < 0)
 			throw null;
 		if (index == this.size) 
 		{
