@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.datastructure.stack.cs61;
 
-import eg.edu.alexu.csd.datastructure.linkedList.cs61_35.SNode;
 import eg.edu.alexu.csd.datastructure.stack.IStack;
 import java.lang.Exception;
 
@@ -43,37 +42,25 @@ public class Stack implements IStack {
 	}
 
 	public void add(int index, Object element) {
-
 		if (index > this.size || index < 0)
 			throw null;
-		if (index == this.size) {
-			this.add(element);
-		} else if (index == 0) {
-			StackNode newNode = new StackNode(this.head, element);
-			this.head = newNode;
+		if (index == 0) {
+			StackNode entry = new StackNode(this.head, element);
+			this.head = entry;
+			if(isEmpty())
+				this.tail = this.head;
 			this.size++;
 		} else {
 			StackNode temp = this.head;
 			for (int i = 0; i < index - 1; i++) {
 				temp = temp.getNext();
 			}
-			StackNode addedNode = new StackNode(temp.getNext(), element);
-			temp.setNext(addedNode);
+			StackNode entry = new StackNode(temp.getNext(), element);
+			temp.setNext(entry);
 			this.size++;
 		}
 	}
 
-	
-	public void add(Object element) {
-		StackNode addedNode = new StackNode(null, element);
-		if (isEmpty())
-			this.head = addedNode;
-		else
-			this.tail.setNext(addedNode);
-		this.tail = addedNode;
-		this.size++;
-	}
-	
 	public Object pop() {
 		Object temp = this.peek();
 		StackNode traverser = this.head;
