@@ -42,7 +42,7 @@ public class Stack implements IStack {
 	public void add(int index, Object element) {
 		if (index > this.size || index < 0)
 			throw null;
-		else if (index == 0) {
+		if (index == 0) {
 			StackNode entry = new StackNode(this.head, element);
 			this.head = entry;
 			this.size++;
@@ -59,9 +59,7 @@ public class Stack implements IStack {
 
 	public Object pop() {
 		Object temp = this.peek();
-		StackNode tempHead = this.head;
-		this.head = tempHead.getNext();
-		tempHead.setNext(null);
+		this.head = this.head.getNext();
 		this.size--;
 		return temp;
 	}
