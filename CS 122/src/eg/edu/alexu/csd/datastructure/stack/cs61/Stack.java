@@ -3,45 +3,38 @@ package eg.edu.alexu.csd.datastructure.stack.cs61;
 import eg.edu.alexu.csd.datastructure.stack.IStack;
 
 public class Stack implements IStack {
-	
-	
+
 	private class StackNode {
-		
+
 		private Object element;
 		private StackNode next;
-		
-		public StackNode(StackNode next, Object element)
-		{
+
+		public StackNode(StackNode next, Object element) {
 			this.element = element;
 			this.next = next;
 		}
-		
-		public void setElement(Object element)
-		{
+
+		public void setElement(Object element) {
 			this.element = element;
 		}
-		
-		public void setNext(StackNode next)
-		{
+
+		public void setNext(StackNode next) {
 			this.next = next;
 		}
-		
-		public StackNode getNext()
-		{
+
+		public StackNode getNext() {
 			return this.next;
 		}
-		
-		public Object getElement()
-		{
+
+		public Object getElement() {
 			return this.element;
 		}
 	}
-	
+
 	private StackNode head;
 	private int size;
-	
-	public Stack()
-	{
+
+	public Stack() {
 		this.head = null;
 		this.size = 0;
 	}
@@ -66,38 +59,38 @@ public class Stack implements IStack {
 
 	public Object pop() {
 		Object temp = this.peek();
-		this.head = this.head.getNext();
+		StackNode tempHead = this.head;
+		this.head = tempHead.getNext();
+		tempHead.setNext(null);
 		this.size--;
 		return temp;
 	}
-	
+
 	public Object peek() {
-		if(this.isEmpty())
+		if (this.isEmpty())
 			throw null;
 		Object temp = this.head.getElement();
 		return temp;
 	}
-	
+
 	public void push(Object element) {
-		this.add(0,element);
+		this.add(0, element);
 	}
 
 	public boolean isEmpty() {
-		if(this.size == 0)
-			return true;	
+		if (this.size == 0)
+			return true;
 		return false;
 	}
 
-	public int size() {	
+	public int size() {
 		return this.size;
 	}
-	
-	public void print()
-	{
+
+	public void print() {
 		StackNode temp = this.head;
 		System.out.print("stack: ");
-		while(temp!=null)
-		{
+		while (temp != null) {
 			System.out.print(temp.getElement() + " ");
 			temp = temp.getNext();
 		}
