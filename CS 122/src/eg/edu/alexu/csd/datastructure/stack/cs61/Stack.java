@@ -10,7 +10,7 @@ public class Stack implements IStack {
 		private Object element;
 		private StackNode next;
 		
-		public StackNode(StackNode next , Object element)
+		public StackNode(StackNode next, Object element)
 		{
 			this.element = element;
 			this.next = next;
@@ -46,17 +46,14 @@ public class Stack implements IStack {
 		this.size = 0;
 	}
 
-	@Override
 	public void add(int index, Object element) {
 		if (index > this.size || index < 0)
 			throw null;
 		else if (index == 0) {
-			StackNode entry = new StackNode(this.head,element);
+			StackNode entry = new StackNode(this.head, element);
 			this.head = entry;
 			this.size++;
-		} 
-		else 
-		{
+		} else {
 			StackNode temp = this.head;
 			for (int i = 0; i < index - 1; i++) {
 				temp = temp.getNext();
@@ -75,7 +72,6 @@ public class Stack implements IStack {
 	}
 	
 	public Object peek() {
-		
 		if(isEmpty())
 			throw null;
 		Object temp = this.head.getElement();
@@ -86,16 +82,18 @@ public class Stack implements IStack {
 		add(0,element);
 	}
 
-	public boolean isEmpty() 
-	{
+	public boolean isEmpty() {
 		if(this.size == 0)
 			return true;	
 		return false;
 	}
 
-	public int size() 
-	{	
+	public int size() {	
 		return this.size;
 	}
 	
+	public void print()
+	{
+		
+	}
 }
