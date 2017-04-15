@@ -71,7 +71,7 @@ public class Stack implements IStack {
 	}
 
 	public void push(Object element) {
-		this.add(this.size, element);
+		this.add(0, element);
 	}
 
 	public boolean isEmpty() {
