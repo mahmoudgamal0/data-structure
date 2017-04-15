@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.datastructure.stack.cs61;
 
-import java.lang.Exception;
 import eg.edu.alexu.csd.datastructure.stack.IStack;
 
 public class Stack implements IStack {
@@ -49,7 +48,7 @@ public class Stack implements IStack {
 
 	public void add(int index, Object element) {
 		if (index > this.size || index < 0)
-			return;
+			throw null;
 		else if (index == 0) {
 			StackNode entry = new StackNode(this.head, element);
 			this.head = entry;
