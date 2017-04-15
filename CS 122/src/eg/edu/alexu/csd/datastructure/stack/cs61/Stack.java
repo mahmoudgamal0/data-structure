@@ -94,6 +94,13 @@ public class Stack implements IStack {
 	
 	public void print()
 	{
-		
+		StackNode temp = this.head;
+		System.out.print("stack: ");
+		while(temp!=null)
+		{
+			System.out.print(temp.getElement() + " ");
+			temp = temp.getNext();
+		}
+		System.out.println();
 	}
 }
