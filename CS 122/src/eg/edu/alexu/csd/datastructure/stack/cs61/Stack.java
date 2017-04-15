@@ -1,8 +1,6 @@
 package eg.edu.alexu.csd.datastructure.stack.cs61;
 
 import eg.edu.alexu.csd.datastructure.stack.IStack;
-import java.lang.Exception;
-
 public class Stack implements IStack {
 
 	private class StackNode {
@@ -33,7 +31,6 @@ public class Stack implements IStack {
 	}
 
 	private StackNode head;
-	private StackNode tail;
 	private int size;
 
 	public Stack() {
@@ -47,8 +44,6 @@ public class Stack implements IStack {
 		if (index == 0) {
 			StackNode entry = new StackNode(this.head, element);
 			this.head = entry;
-			if(isEmpty())
-				this.tail = this.head;
 			this.size++;
 		} else {
 			StackNode temp = this.head;
@@ -63,11 +58,7 @@ public class Stack implements IStack {
 
 	public Object pop() {
 		Object temp = this.peek();
-		StackNode traverser = this.head;
-		while(traverser.getNext() != this.tail)
-			traverser = traverser.getNext();
-		this.tail = traverser;
-		this.tail.setNext(null);
+		this.head = head.getNext();
 		this.size--;
 		return temp;
 	}
@@ -75,7 +66,7 @@ public class Stack implements IStack {
 	public Object peek() {
 		if (this.isEmpty())
 			throw null;
-		Object temp = this.tail.getElement();
+		Object temp = this.head.getElement();
 		return temp;
 	}
 
