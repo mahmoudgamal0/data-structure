@@ -49,7 +49,7 @@ public class Stack implements IStack {
 
 	public void add(int index, Object element) {
 		if (index > this.size || index < 0)
-			throw new NullPointerException();
+			return;
 		else if (index == 0) {
 			StackNode entry = new StackNode(this.head, element);
 			this.head = entry;
