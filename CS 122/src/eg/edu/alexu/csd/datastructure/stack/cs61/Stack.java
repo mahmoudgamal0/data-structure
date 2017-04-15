@@ -65,21 +65,21 @@ public class Stack implements IStack {
 	}
 
 	public Object pop() {
-		Object temp = peek();
+		Object temp = this.peek();
 		this.head = this.head.getNext();
 		this.size--;
 		return temp;
 	}
 	
 	public Object peek() {
-		if(isEmpty())
+		if(this.isEmpty())
 			throw null;
 		Object temp = this.head.getElement();
 		return temp;
 	}
 	
 	public void push(Object element) {
-		add(0,element);
+		this.add(0,element);
 	}
 
 	public boolean isEmpty() {
