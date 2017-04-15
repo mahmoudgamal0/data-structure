@@ -1,6 +1,8 @@
 package eg.edu.alexu.csd.datastructure.stack.cs61;
 
+import eg.edu.alexu.csd.datastructure.linkedList.cs61_35.SNode;
 import eg.edu.alexu.csd.datastructure.stack.IStack;
+import java.lang.Exception;
 
 public class Stack implements IStack {
 
@@ -32,6 +34,7 @@ public class Stack implements IStack {
 	}
 
 	private StackNode head;
+	private StackNode tail;
 	private int size;
 
 	public Stack() {
@@ -40,26 +43,44 @@ public class Stack implements IStack {
 	}
 
 	public void add(int index, Object element) {
+
 		if (index > this.size || index < 0)
 			throw null;
-		if (index == 0) {
-			StackNode entry = new StackNode(this.head, element);
-			this.head = entry;
+		if (index == this.size) {
+			this.add(element);
+		} else if (index == 0) {
+			StackNode newNode = new StackNode(this.head, element);
+			this.head = newNode;
 			this.size++;
 		} else {
 			StackNode temp = this.head;
 			for (int i = 0; i < index - 1; i++) {
 				temp = temp.getNext();
 			}
-			StackNode entry = new StackNode(temp.getNext(), element);
-			temp.setNext(entry);
+			StackNode addedNode = new StackNode(temp.getNext(), element);
+			temp.setNext(addedNode);
 			this.size++;
 		}
 	}
 
+	
+	public void add(Object element) {
+		StackNode addedNode = new StackNode(null, element);
+		if (isEmpty())
+			this.head = addedNode;
+		else
+			this.tail.setNext(addedNode);
+		this.tail = addedNode;
+		this.size++;
+	}
+	
 	public Object pop() {
 		Object temp = this.peek();
-		this.head = this.head.getNext();
+		StackNode traverser = this.head;
+		while(traverser.getNext() != this.tail)
+			traverser = traverser.getNext();
+		this.tail = traverser;
+		this.tail.setNext(null);
 		this.size--;
 		return temp;
 	}
@@ -67,12 +88,12 @@ public class Stack implements IStack {
 	public Object peek() {
 		if (this.isEmpty())
 			throw null;
-		Object temp = this.head.getElement();
+		Object temp = this.tail.getElement();
 		return temp;
 	}
 
 	public void push(Object element) {
-		this.add(0, element);
+		this.add(this.size, element);
 	}
 
 	public boolean isEmpty() {
