@@ -67,7 +67,7 @@ public class Stack implements IStack {
 
 	public Object peek() {
 		if (this.isEmpty())
-			throw new EmptyStackException();
+			throw new RuntimeException();
 		Object temp = this.head.getElement();
 		return temp;
 	}
