@@ -1,5 +1,7 @@
 package eg.edu.alexu.csd.datastructure.stack.cs61;
 
+import java.util.EmptyStackException;
+
 import eg.edu.alexu.csd.datastructure.stack.IStack;
 public class Stack implements IStack {
 
@@ -65,7 +67,7 @@ public class Stack implements IStack {
 
 	public Object peek() {
 		if (this.isEmpty())
-			throw null;
+			throw new EmptyStackException();
 		Object temp = this.head.getElement();
 		return temp;
 	}
