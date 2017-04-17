@@ -7,10 +7,8 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 	
 	public String infixToPostfix(String expression) {
 		
-		if(!isCorrect(expression))
-			throw null;
-		else if(expression.length() == 0)
-			throw null;
+		isCorrect(expression);
+		
 		Stack s = new Stack();
 		String newExpression = "";
 		int pFlag = 0;
@@ -130,8 +128,10 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		throw null;
 	}
 
-	private boolean isCorrect(String expression)
+	private void isCorrect(String expression)
 	{
+		if(expression.length() == 0)
+			throw null;
 		for (int i = 0 ; i < expression.length()-1 ; i++)
 		{
 			char current = expression.charAt(i);
@@ -142,23 +142,22 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 				if(i == 0)
 					throw null;
 				else if(isSymbol(next))
-					return false;
+					throw null;
 			}
 			if(isSymbol(next) && i+1 == expression.length()-1)
 				throw null;
 			else if(current == '(')
 			{
 				if(isSymbol(next))
-					return false;
+					throw null;
 			}
 			else if(next == ')')
 			{
 				if(isSymbol(current))
-					return false;
+					throw null;
 			}
 		}
 		
-		return true;
 	}
 
 	private void isNumeric(String expression)
