@@ -13,7 +13,7 @@ public class Main {
 		
 		System.out.println(x.infixToPostfix(f));
 		
-		String i = " 1 1 2 + 7 * * 2 -";
+		String i = "1 1 2 + 7 * * 2 - ";
 		
 		System.out.println(x.evaluate(i));
 	

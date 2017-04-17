@@ -203,21 +203,14 @@ public class Evaluator implements IExpressionEvaluator{
 		for (int i = 0 ; i < expression.length()-1 ; i++)
 		{
 			char c = expression.charAt(i);
-			if(expression.charAt(expression.length()-1) == ' ')
-			{
-				throw null;
-			}
-			else if(isOperation(c) && expression.charAt(i+1) == ' ')
-			{
-				i++;
+			
+			if(isOperation(c))
 				continue;
-			}
-			else if(Character.isDigit(c) && expression.charAt(i+1) == ' ')
+			else 
 			{
-				i++;
-				continue;
+				if(!Character.isDigit(c))
+					throw null;
 			}
-			throw null;
 		}
 	}
 
