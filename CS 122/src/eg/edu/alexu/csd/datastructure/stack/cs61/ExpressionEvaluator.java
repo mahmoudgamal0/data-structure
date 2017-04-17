@@ -9,6 +9,8 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		
 		if(!isCorrect(expression))
 			throw null;
+		else if(expression.length() == 0)
+			throw null;
 		Stack s = new Stack();
 		String newExpression = "";
 		int pFlag = 0;
@@ -68,6 +70,8 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 	
 	public int evaluate(String expression) {
 		
+		if(expression.length() == 0)
+			throw null;
 		int result = 0;
 		Stack s = new Stack();
 		for(int i = 0 ; i < expression.length() ; i++)
