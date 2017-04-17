@@ -67,7 +67,7 @@ public class Evaluator implements IExpressionEvaluator{
 							postExpression += ' ';
 						}
 						s.pop();
-						postExpression += ' ';
+						postExpression += "  ";
 						parenFlag--;
 					}
 				}
