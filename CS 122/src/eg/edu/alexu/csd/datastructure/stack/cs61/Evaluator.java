@@ -168,6 +168,7 @@ public class Evaluator implements IExpressionEvaluator{
 	{
 		if(expression.length() == 0)
 			throw null;
+		int opCount = 0;
 		for (int i = 0 ; i < expression.length()-1 ; i++)
 		{
 			char current = expression.charAt(i);
@@ -175,12 +176,13 @@ public class Evaluator implements IExpressionEvaluator{
 			
 			if(isOperation(current))
 			{
+				opCount++;
 				if(i == 0)
 					throw null;
 				else if(isOperation(next))
 					throw null;
 			}
-			if(isOperation(next) && i+1 == expression.length()-1)
+			else if(isOperation(next) && i+1 == expression.length()-1)
 				throw null;
 			else if(current == '(')
 			{
@@ -196,6 +198,8 @@ public class Evaluator implements IExpressionEvaluator{
 				throw null;
 		}
 		
+		if (opCount == 0)
+			throw null;
 	}
 
 	private void isNumeric(String expression)
