@@ -23,8 +23,9 @@ public class Evaluator implements IExpressionEvaluator{
 			{
 				String temp = "";
 				temp += c;
-				while(addToString(expression, ++i))
+				while(addToString(expression, i+1))
 				{
+					i++;
 					temp += expression.charAt(i);
 				}
 				
@@ -64,9 +65,8 @@ public class Evaluator implements IExpressionEvaluator{
 							postExpression += s.pop();
 							postExpression += ' ';
 						}
-						postExpression += ' ';
 						s.pop();
-						
+						postExpression += ' ';
 						parenFlag--;
 					}
 				}
@@ -99,8 +99,9 @@ public class Evaluator implements IExpressionEvaluator{
 			{
 				String temp = "";
 				temp += c;
-				while(addToString(expression, ++i))
+				while(addToString(expression, i+1))
 				{
+					i++;
 					temp += expression.charAt(i);
 				}
 				s.push(getValue(temp));
