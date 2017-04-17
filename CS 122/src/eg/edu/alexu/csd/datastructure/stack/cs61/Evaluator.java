@@ -178,6 +178,8 @@ public class Evaluator implements IExpressionEvaluator{
 				if(isOperation(current))
 					throw null;
 			}
+			else if(current == '!')
+				throw null;
 		}
 		
 	}
