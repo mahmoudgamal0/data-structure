@@ -200,18 +200,24 @@ public class Evaluator implements IExpressionEvaluator{
 
 	private void isNumeric(String expression)
 	{
-		for (int i = 0 ; i < expression.length() ; i++)
+		for (int i = 0 ; i < expression.length()-1 ; i++)
 		{
 			char c = expression.charAt(i);
-			if(isOperation(c))
-				continue;
-			else if(c == ' ')
-				continue;
-			else
+			if(expression.charAt(expression.length()-1) == ' ')
 			{
-				if(!Character.isDigit(c))
-					throw null;
+				throw null;
 			}
+			else if(isOperation(c) && expression.charAt(i+1) == ' ')
+			{
+				i++;
+				continue;
+			}
+			else if(Character.isDigit(c) && expression.charAt(i+1) == ' ')
+			{
+				i++;
+				continue;
+			}
+			throw null;
 		}
 	}
 

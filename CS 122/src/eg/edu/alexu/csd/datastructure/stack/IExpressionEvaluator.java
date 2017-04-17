@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.datastructure.stack;
 
 public interface IExpressionEvaluator {
+	
 	/**
 	 * Takes a symbolic/numeric infix expression as input and converts it to
 	 * postfix notation. There is no assumption on spaces between terms or the

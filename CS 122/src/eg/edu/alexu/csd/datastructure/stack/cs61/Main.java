@@ -9,11 +9,11 @@ public class Main {
 		
 		
 		
-		String f = "1*((1+2)*7)-2";
+		String f = "a+b";
 		
 		System.out.println(x.infixToPostfix(f));
 		
-		String i = "1 1 2 +  7 *  * 2 -";
+		String i = " 1 1 2 + 7 * * 2 -";
 		
 		System.out.println(x.evaluate(i));
 	
