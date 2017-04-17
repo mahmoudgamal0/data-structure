@@ -72,6 +72,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		
 		if(expression.length() == 0)
 			throw null;
+		isNumeric(expression);
 		int result = 0;
 		Stack s = new Stack();
 		for(int i = 0 ; i < expression.length() ; i++)
@@ -160,4 +161,18 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		return true;
 	}
 
+	private void isNumeric(String expression)
+	{
+		for (int i = 0 ; i < expression.length() ; i++)
+		{
+			char c = expression.charAt(i);
+			if(isSymbol(c))
+				continue;
+			else
+			{
+				if(!Character.isDigit(c))
+					throw null;
+			}
+		}
+	}
 }
