@@ -16,18 +16,16 @@ public class Evaluator implements IExpressionEvaluator{
 		
 		for(int i = 0 ; i < expression.length() ; i++)
 		{
-			// digits are strings
-			// ops and symbols are chars
-			
+		
 			char c = expression.charAt(i);
 			
 			if(!isSymbol(c))
 			{
 				String temp = "";
-				while(addToString(expression, i))
+				temp += c;
+				while(addToString(expression, ++i))
 				{
 					temp += expression.charAt(i);
-					i++;
 				}
 				
 				postExpression += temp + " ";
@@ -85,17 +83,28 @@ public class Evaluator implements IExpressionEvaluator{
 		
 		if(expression.length() == 0)
 			throw null;
+		
 		isNumeric(expression);
+		
 		int result = 0;
+		
 		Stack s = new Stack();
+		
 		for(int i = 0 ; i < expression.length() ; i++)
 		{
 			char c = expression.charAt(i);
-			if(c == ' ')
-				continue;
+			
 			if(!isSymbol(c))
-				s.push(Character.getNumericValue(c));
-			else if(isSymbol(c))
+			{
+				String temp = "";
+				temp += c;
+				while(addToString(expression, ++i))
+				{
+					temp += expression.charAt(i);
+				}
+				s.push(getValue(temp));
+			}
+			else if(isOperation(c))
 			{
 				if(s.isEmpty() || s.size() < 2)
 					throw null;
@@ -105,9 +114,12 @@ public class Evaluator implements IExpressionEvaluator{
 					s.push(result);
 				}
 			}
+			else if( c == ' ')
+				continue;
 			else
 				throw null;
 		}
+		
 		return result;
 	}
 
@@ -189,7 +201,7 @@ public class Evaluator implements IExpressionEvaluator{
 		for (int i = 0 ; i < expression.length() ; i++)
 		{
 			char c = expression.charAt(i);
-			if(isSymbol(c))
+			if(isOperation(c))
 				continue;
 			else if(c == ' ')
 				continue;
@@ -216,5 +228,17 @@ public class Evaluator implements IExpressionEvaluator{
 		if(isSymbol(c))
 			return false;
 		return true;
+	}
+
+	private int getValue(String expression)
+	{
+		int value = 0;
+		
+		for (int i = expression.length() - 1 ; i >=0 ; i--)
+		{
+			value += Character.getNumericValue(expression.charAt(i)) * Math.pow(10, expression.length() - i - 1);
+		}
+		
+		return value;
 	}
 }
