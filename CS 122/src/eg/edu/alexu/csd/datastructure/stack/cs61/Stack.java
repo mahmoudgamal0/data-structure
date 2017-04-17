@@ -6,10 +6,12 @@ public class Stack implements IStack {
 
 
 	private StackNode head;
+	private StackNode tail;
 	private int size;
 
 	public Stack() {
 		this.head = null;
+		this.tail = null;
 		this.size = 0;
 	}
 
@@ -19,7 +21,12 @@ public class Stack implements IStack {
 		if (index == 0) {
 			StackNode entry = new StackNode(this.head, element);
 			this.head = entry;
-			this.size++;
+			if(this.isEmpty())
+				this.tail = this.head;
+		} else if (index == this.size) {
+			StackNode entry = new StackNode(null, element);
+			this.tail.setNext(entry);
+			this.tail = entry;
 		} else {
 			StackNode temp = this.head;
 			for (int i = 0; i < index - 1; i++) {
@@ -27,13 +34,17 @@ public class Stack implements IStack {
 			}
 			StackNode entry = new StackNode(temp.getNext(), element);
 			temp.setNext(entry);
-			this.size++;
 		}
+		this.size++;
 	}
 
 	public Object pop() {
 		Object temp = this.peek();
-		this.head = head.getNext();
+		StackNode traverser = this.head;
+		while(traverser.getNext()!= this.tail)
+			traverser = traverser.getNext();
+		this.tail = traverser;
+		this.tail.setNext(null);
 		this.size--;
 		return temp;
 	}
@@ -41,12 +52,12 @@ public class Stack implements IStack {
 	public Object peek() {
 		if (this.isEmpty())
 			throw new RuntimeException();
-		Object temp = this.head.getElement();
+		Object temp = this.tail.getElement();
 		return temp;
 	}
 
 	public void push(Object element) {
-		this.add(0, element);
+		this.add(this.size, element);
 	}
 
 	public boolean isEmpty() {
