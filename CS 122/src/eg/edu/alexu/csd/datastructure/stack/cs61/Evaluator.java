@@ -68,6 +68,7 @@ public class Evaluator implements IExpressionEvaluator{
 					{
 						if(parenFlag == 0)
 							throw null;
+						postExpression += ' ';
 						while((char)s.peek() != '(')
 						{
 							postExpression += s.pop();
