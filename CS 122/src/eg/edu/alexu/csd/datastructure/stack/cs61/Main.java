@@ -9,11 +9,11 @@ public class Main {
 		
 		
 		
-		String f = "1";
+		String f = "1*2*3*4*5";
 		
 		System.out.println(x.infixToPostfix(f));
 		
-		String i = "2";
+		String i = "1 2 * 3 * 4 * 5 *";
 		
 		System.out.println(x.evaluate(i));
 	

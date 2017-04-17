@@ -41,12 +41,20 @@ public class Evaluator implements IExpressionEvaluator{
 						s.push(c);
 					else if(!isHigher((char)s.peek() , c))
 					{
-						while(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek()))
+						if((char)s.peek() == c)
 						{
-							postExpression += s.pop();
+							postExpression += c;
 							postExpression += ' ';
 						}
-						s.push(c);
+						else
+						{
+							while(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek()))
+							{
+								postExpression += s.pop();
+								postExpression += ' ';
+							}
+							s.push(c);
+						}
 					}
 				}
 				else if(isParen(c))
