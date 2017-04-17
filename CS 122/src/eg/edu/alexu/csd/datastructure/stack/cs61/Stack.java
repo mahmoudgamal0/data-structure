@@ -41,7 +41,7 @@ public class Stack implements IStack {
 	public Object pop() {
 		Object temp = this.peek();
 		StackNode traverser = this.head;
-		while(traverser.getNext()!= this.tail)
+		while(traverser.getNext()!= this.tail && traverser!=this.tail)
 			traverser = traverser.getNext();
 		this.tail = traverser;
 		this.tail.setNext(null);

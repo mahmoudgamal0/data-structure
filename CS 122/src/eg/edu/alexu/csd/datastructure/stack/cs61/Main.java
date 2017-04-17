@@ -16,6 +16,11 @@ public class Main {
 		System.out.println(x.peek());
 		System.out.println(x.pop());
 		x.print();
+		System.out.println(x.pop());
+		x.print();
+		System.out.println(x.pop());
+		x.print();
+		
 	}
 	
 }
