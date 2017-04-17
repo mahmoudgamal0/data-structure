@@ -74,7 +74,6 @@ public class Evaluator implements IExpressionEvaluator{
 							postExpression += ' ';
 						}
 						s.pop();
-						postExpression += ' ';
 						parenFlag--;
 					}
 				}
@@ -83,7 +82,11 @@ public class Evaluator implements IExpressionEvaluator{
 		}
 		
 		while(!s.isEmpty())
+		{
+			postExpression += ' ';
 			postExpression += s.pop();
+		}
+			
 		
 		return postExpression;
 	}
