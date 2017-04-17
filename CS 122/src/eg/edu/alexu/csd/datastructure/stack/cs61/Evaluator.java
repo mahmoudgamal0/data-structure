@@ -206,6 +206,8 @@ public class Evaluator implements IExpressionEvaluator{
 			
 			if(isOperation(c))
 				continue;
+			else if(c == ' ')
+				continue;
 			else 
 			{
 				if(!Character.isDigit(c))
