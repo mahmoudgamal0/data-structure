@@ -20,9 +20,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 			
 			if(isSymbol(c))
 			{
-				if(s.isEmpty())
-					s.push(c);
-				else if((char)s.peek() == '(')
+				if(s.isEmpty() || (char)s.peek() == '(')
 					s.push(c);
 				else if(hasHigher((char)s.peek(), c))
 					s.push(c);
@@ -50,6 +48,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 						throw null;
 					else
 					{
+						newExpression += ' ';
 						while((char)s.peek() != '(')
 						{
 							newExpression += s.pop();
