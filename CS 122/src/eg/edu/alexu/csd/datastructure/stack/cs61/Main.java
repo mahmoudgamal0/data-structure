@@ -9,14 +9,14 @@ public class Main {
 		
 		
 		
-		String f = "1*(12*(1+2))-2";
+		String f = "1 * ( 12 * ( 1 + 2 ) ) - 2";
 		
 		System.out.println(x.infixToPostfix(f));
 		
 		String i = "1 12 1 2 + * * 2 -";
 		
 		System.out.println(x.evaluate(i));
-		
+	
 	}
 	
 }

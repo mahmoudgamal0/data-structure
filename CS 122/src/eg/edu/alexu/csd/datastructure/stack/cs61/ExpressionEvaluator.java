@@ -17,6 +17,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 			char c = expression.charAt(i);
 			if(c == ' ')
 				continue;
+			
 			if(isSymbol(c))
 			{
 				if(s.isEmpty())
@@ -30,6 +31,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 					while(!s.isEmpty() && !hasHigher((char)s.peek() , c) && (char)s.peek()!='(')
 					{
 						newExpression += s.pop();
+						newExpression += ' ';
 					}
 					s.push(c);
 				}
@@ -49,14 +51,21 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 					else
 					{
 						while((char)s.peek() != '(')
+						{
 							newExpression += s.pop();
+							newExpression += ' ';
+						}
 						s.pop();
 						pFlag--;
 					}
 				}
 			}
 			else
+			{
 				newExpression += c;
+				newExpression += ' ';
+			}
+			
 		}
 		
 		while(!s.isEmpty())
@@ -167,6 +176,8 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 			char c = expression.charAt(i);
 			if(isSymbol(c))
 				continue;
+			else if(c == ' ')
+				continue;
 			else
 			{
 				if(!Character.isDigit(c))
@@ -174,4 +185,5 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 			}
 		}
 	}
+
 }
