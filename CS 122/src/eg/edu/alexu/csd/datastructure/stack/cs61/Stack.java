@@ -44,10 +44,10 @@ public class Stack implements IStack {
 		if(this.size != 1){
 			this.tail = this.tail.getPrev();
 			this.tail.setNext(null);
+			this.size--;
 		}
 		else
 			this.clear();
-		this.size--;
 		return temp;
 	}
 
