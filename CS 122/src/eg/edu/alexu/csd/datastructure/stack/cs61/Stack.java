@@ -32,7 +32,7 @@ public class Stack implements IStack {
 			for (int i = 0; i < index; i++) {
 				temp = temp.getNext();
 			}
-			StackNode entry = new StackNode(temp.getNext(),temp.getPrev(), element);
+			StackNode entry = new StackNode(temp,temp.getPrev(), element);
 			entry.getNext().setPrev(entry);
 			entry.getPrev().setNext(entry);
 		}
