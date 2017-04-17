@@ -23,6 +23,9 @@ public class Stack implements IStack {
 			this.head = entry;
 			if(this.isEmpty())
 				this.tail = this.head;
+			else{
+				entry.getNext().setPrev(entry);
+			}
 		} else if (index == this.size) {
 			StackNode entry = new StackNode(null, this.tail, element);
 			this.tail.setNext(entry);
