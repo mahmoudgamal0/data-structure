@@ -2,77 +2,85 @@ package eg.edu.alexu.csd.datastructure.stack.cs61;
 
 import eg.edu.alexu.csd.datastructure.stack.IExpressionEvaluator;
 
-public class ExpressionEvaluator implements IExpressionEvaluator {
-
+public class Evaluator implements IExpressionEvaluator{
 	
 	public String infixToPostfix(String expression) {
 		
 		isCorrect(expression);
 		
 		Stack s = new Stack();
-		String newExpression = "";
-		int pFlag = 0;
-		for(int i = 0 ; i< expression.length() ; i++)
+		String postExpression = "";
+		
+		int parenFlag = 0;
+		
+		
+		for(int i = 0 ; i < expression.length() ; i++)
 		{
-			char c = expression.charAt(i);
-			if(c == ' ')
-				continue;
+			// digits are strings
+			// ops and symbols are chars
 			
-			if(isSymbol(c))
+			char c = expression.charAt(i);
+			
+			if(!isSymbol(c))
 			{
-				if(s.isEmpty() || (char)s.peek() == '(')
-					s.push(c);
-				else if(hasHigher((char)s.peek(), c))
-					s.push(c);
-				else if(!hasHigher((char)s.peek() , c))
+				String temp = "";
+				while(addToString(expression, i))
 				{
-					while(!s.isEmpty() && !hasHigher((char)s.peek() , c) && (char)s.peek()!='(')
-					{
-						newExpression += s.pop();
-						newExpression += ' ';
-					}
-					s.push(c);
+					temp += expression.charAt(i);
+					i++;
 				}
 				
-			}
-			else if(c == '(' || c == ')')
-			{
-				if(c == '(')
-				{
-					pFlag++;
-					s.push(c);
-				}
-				else if(c == ')')
-				{
-					if(pFlag == 0)
-						throw null;
-					else
-					{
-						while((char)s.peek() != '(')
-						{
-							newExpression += s.pop();
-							newExpression += ' ';
-						}
-						s.pop();
-						pFlag--;
-					}
-				}
+				postExpression += temp + " ";
 			}
 			else
 			{
-				newExpression += c;
-				newExpression += ' ';
+				if(isOperation(c))
+				{
+					if(s.isEmpty() || isParen((char)s.peek()))
+						s.push(c);
+					else if(isHigher((char)s.peek(), c))
+						s.push(c);
+					else if(!isHigher((char)s.peek() , c))
+					{
+						while(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek()))
+						{
+							postExpression += s.pop();
+							postExpression += ' ';
+						}
+						s.push(c);
+					}
+				}
+				else if(isParen(c))
+				{
+					if(c == '(')
+					{
+						parenFlag++;
+						s.push(c);
+					}
+					else if(c == ')')
+					{
+						if(parenFlag == 0)
+							throw null;
+						while((char)s.peek() != '(')
+						{
+							postExpression += s.pop();
+							postExpression += ' ';
+						}
+						s.pop();
+						postExpression += ' ';
+						parenFlag--;
+					}
+				}
 			}
 			
 		}
 		
 		while(!s.isEmpty())
-			newExpression += s.pop();
+			postExpression += s.pop();
 		
-		return newExpression;
+		return postExpression;
 	}
 
-	
 	public int evaluate(String expression) {
 		
 		if(expression.length() == 0)
@@ -103,14 +111,21 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		return result;
 	}
 
-	private boolean isSymbol(char c)
+	private boolean isOperation(char c)
 	{
 		if(c == '+' || c == '-' || c== '/' || c == '*' )
 			return true;
 		return false;
 	}
 	
-	private boolean hasHigher(char inStack, char scanned)
+	private boolean isParen(char c)
+	{
+		if(c == '(' || c == ')')
+			return true;
+		return false;
+	}
+	
+	private boolean isHigher(char inStack, char scanned)
 	{
 		if (scanned == '*' || scanned == '/')
 			if(inStack == '+' || inStack == '-')
@@ -144,23 +159,23 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 			char current = expression.charAt(i);
 			char next = expression.charAt(i+1);
 			
-			if(isSymbol(current))
+			if(isOperation(current))
 			{
 				if(i == 0)
 					throw null;
-				else if(isSymbol(next))
+				else if(isOperation(next))
 					throw null;
 			}
-			if(isSymbol(next) && i+1 == expression.length()-1)
+			if(isOperation(next) && i+1 == expression.length()-1)
 				throw null;
 			else if(current == '(')
 			{
-				if(isSymbol(next))
+				if(isOperation(next))
 					throw null;
 			}
 			else if(next == ')')
 			{
-				if(isSymbol(current))
+				if(isOperation(current))
 					throw null;
 			}
 		}
@@ -184,4 +199,20 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		}
 	}
 
+	private boolean isSymbol(char c)
+	{
+		if(c == ' ' || isOperation(c) || isParen(c))
+			return true;
+		return false;
+	}
+	
+	private boolean addToString(String expression, int location)
+	{
+		if(location == expression.length())
+			return false;
+		char c = expression.charAt(location);
+		if(isSymbol(c))
+			return false;
+		return true;
+	}
 }
