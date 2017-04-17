@@ -19,32 +19,34 @@ public class Stack implements IStack {
 		if (index > this.size || index < 0)
 			throw null;
 		if (index == 0) {
-			StackNode entry = new StackNode(this.head, element);
+			StackNode entry = new StackNode(this.head, null, element);
 			this.head = entry;
 			if(this.isEmpty())
 				this.tail = this.head;
 		} else if (index == this.size) {
-			StackNode entry = new StackNode(null, element);
+			StackNode entry = new StackNode(null, this.tail, element);
 			this.tail.setNext(entry);
 			this.tail = entry;
 		} else {
 			StackNode temp = this.head;
-			for (int i = 0; i < index - 1; i++) {
+			for (int i = 0; i < index; i++) {
 				temp = temp.getNext();
 			}
-			StackNode entry = new StackNode(temp.getNext(), element);
-			temp.setNext(entry);
+			StackNode entry = new StackNode(temp.getNext(),temp.getPrev(), element);
+			entry.getNext().setPrev(entry);
+			entry.getPrev().setNext(entry);
 		}
 		this.size++;
 	}
 
 	public Object pop() {
 		Object temp = this.peek();
-		StackNode traverser = this.head;
-		while(traverser.getNext()!= this.tail && traverser!=this.tail)
-			traverser = traverser.getNext();
-		this.tail = traverser;
-		this.tail.setNext(null);
+		if(this.size != 1){
+			this.tail = this.tail.getPrev();
+			this.tail.setNext(null);
+		}
+		else
+			this.clear();
 		this.size--;
 		return temp;
 	}
@@ -78,5 +80,12 @@ public class Stack implements IStack {
 			temp = temp.getNext();
 		}
 		System.out.println();
+	}
+	
+	private void clear()
+	{
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
 	}
 }
