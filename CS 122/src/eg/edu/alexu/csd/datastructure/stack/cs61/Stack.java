@@ -1,20 +1,43 @@
+/**
+ *	The stack's ADT logic 
+ */
+
 package eg.edu.alexu.csd.datastructure.stack.cs61;
 
 import eg.edu.alexu.csd.datastructure.stack.IStack;
 
 public class Stack implements IStack {
 
-
+	/**
+	 * the head for adding at zero index
+	 */
 	private StackNode head;
+	
+	/**
+	 * the tail which acts as the top of the stack
+	 */
 	private StackNode tail;
+	
+	/**
+	 * the size of the stack
+	 */
 	private int size;
 
+	/**
+	 * a setter constructor
+	 */
 	public Stack() {
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
 	}
 
+	/**
+	 * adds an element in a specific location
+	 * @param index to place the element into
+	 * @param element the element to be placed
+	 * @throws null if the index is out of bounds
+	 */
 	public void add(int index, Object element) {
 		if (index > this.size || index < 0)
 			throw null;
@@ -42,6 +65,12 @@ public class Stack implements IStack {
 		this.size++;
 	}
 
+	
+	/**
+	 * retrieves the top element in the stack and deletes it
+	 * @return the top element
+	 * @throws null if the stack is empty
+	 */
 	public Object pop() {
 		Object temp = this.peek();
 		if(this.size != 1){
@@ -54,6 +83,11 @@ public class Stack implements IStack {
 		return temp;
 	}
 
+	/**
+	 * retrieves the top element in the stack and does not delete it
+	 * @return the top element
+	 * @throws null if the stack is empty
+	 */
 	public Object peek() {
 		if (this.isEmpty())
 			throw new RuntimeException();
@@ -61,23 +95,39 @@ public class Stack implements IStack {
 		return temp;
 	}
 
+	/**
+	 * adds a new element at the top of the stack
+	 * @param element to be pushed
+	 */
 	public void push(Object element) {
 		this.add(this.size, element);
 	}
 
+	/**
+	 * checks whether the stack is empty  or not
+	 * @return true if the stack is empty
+	 * @return false if the stack is not empty
+	 */
 	public boolean isEmpty() {
 		if (this.size == 0)
 			return true;
 		return false;
 	}
 
+	/**
+	 * @return the number of elements in the stack
+	 */
 	public int size() {
 		return this.size;
 	}
 
+	/**
+	 * prints all the values in the stack
+	 */
 	public void print() {
 		StackNode temp = this.head;
-		System.out.print("stack: ");
+		System.out.println("========================================");
+		System.out.print("Stack: ");
 		while (temp != null) {
 			System.out.print(temp.getElement() + " ");
 			temp = temp.getNext();
@@ -85,7 +135,10 @@ public class Stack implements IStack {
 		System.out.println();
 	}
 	
-	private void clear()
+	/**
+	 * sets the stack empty
+	 */
+	public void clear()
 	{
 		this.head = null;
 		this.tail = null;
