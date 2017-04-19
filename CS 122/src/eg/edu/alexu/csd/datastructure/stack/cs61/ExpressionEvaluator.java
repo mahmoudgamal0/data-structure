@@ -265,9 +265,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		
 		
 		if(expression == null)
-		{
 			throw null;
-		}
 		else if(expression.length() == 0)
 			throw null;
 		else if(!testRightParen(expression))
