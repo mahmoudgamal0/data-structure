@@ -4,9 +4,19 @@ import eg.edu.alexu.csd.datastructure.stack.IExpressionEvaluator;
 
 public class Evaluator implements IExpressionEvaluator{
 	
+	private int flag;
+	
+	public Evaluator()
+	{
+		this.flag = 0;
+	}
+	
 	public String infixToPostfix(String expression) {
 		
 		isCorrect(expression);
+		
+		if(this.flag == 1)
+			return null;
 		
 		Stack s = new Stack();
 		String postExpression = "";
@@ -226,7 +236,7 @@ public class Evaluator implements IExpressionEvaluator{
 		else if(literalsCount == 0)
 			throw null;
 		else if(opCount != literalsCount-1)
-			throw null;
+			this.flag = 1;
 	}
 
 	private void isNumeric(String expression)
