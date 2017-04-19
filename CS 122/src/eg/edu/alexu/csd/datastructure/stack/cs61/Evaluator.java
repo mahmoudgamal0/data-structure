@@ -230,7 +230,7 @@ public class Evaluator implements IExpressionEvaluator{
 				literalsCount++;
 		}
 		
-		if (expression.charAt(expression.length()-1) == '!' || isSymbol(expression.charAt(expression.length()-1)))
+		if (expression.charAt(expression.length()-1) == '!' || isParen(expression.charAt(expression.length()-1)) || isOperation(expression.charAt(expression.length()-1)))
 			throw null;
 		else if(!isSymbol(expression.charAt(expression.length()-1)))
 			literalsCount++;
