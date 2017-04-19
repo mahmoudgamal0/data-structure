@@ -86,8 +86,8 @@ public class Evaluator implements IExpressionEvaluator{
 		
 		while(!s.isEmpty())
 		{
-			postExpression += ' ';
 			postExpression += s.pop();
+			postExpression += ' ';
 		}
 			
 		
