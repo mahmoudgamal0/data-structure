@@ -9,7 +9,7 @@ public class Main {
 		
 		
 		
-		String f = "2+3*4";
+		String f = "(1+2)*7";
 		
 		System.out.println(x.infixToPostfix(f));
 		
