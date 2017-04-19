@@ -195,7 +195,6 @@ public class Evaluator implements IExpressionEvaluator{
 		else if(expression.length() == 0)
 			throw null;
 		
-		int lits = 0;
 		int ops = 0;
 		int opCount = 0;
 		int literalsCount = 0;
@@ -219,7 +218,6 @@ public class Evaluator implements IExpressionEvaluator{
 			{
 				parenFlag++;
 				ops = 0;
-				lits = 0;
 				if(isOperation(next))
 					throw null;
 			}
@@ -228,9 +226,7 @@ public class Evaluator implements IExpressionEvaluator{
 				parenFlag--;
 				if(isOperation(current))
 					throw null;
-				else if(ops == 0 || lits == 0)
-					throw null;
-				else if(ops >= lits-1)
+				else if(ops == 0)
 					throw null;
 			}
 			else if(current == '!')
@@ -245,10 +241,6 @@ public class Evaluator implements IExpressionEvaluator{
 			if(parenFlag != 0 && isOperation(current))
 			{
 				ops++;
-			}
-			else if(parenFlag != 0 && !isSymbol(current))
-			{
-				lits++;
 			}
 		}
 		
