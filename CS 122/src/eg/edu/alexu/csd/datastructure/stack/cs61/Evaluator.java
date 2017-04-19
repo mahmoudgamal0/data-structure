@@ -5,8 +5,14 @@ import eg.edu.alexu.csd.datastructure.stack.IExpressionEvaluator;
 public class Evaluator implements IExpressionEvaluator{
 	
 	public String infixToPostfix(String expression) {
+		try{
+			isCorrect(expression);
+		}
+		catch(RuntimeException e)
+		{
+			return null;
+		}
 		
-		isCorrect(expression);
 		
 		Stack s = new Stack();
 		String postExpression = "";
