@@ -266,8 +266,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		
 		if(expression == null)
 		{
-			this.flag = 1;
-			return;
+			throw null;
 		}
 		else if(expression.length() == 0)
 			throw null;
@@ -275,10 +274,6 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 			throw null;
 		else if(!testOperators(expression))
 			throw null;
-		else
-		{
-		
-		}
 		
 	}
 
