@@ -9,13 +9,12 @@ public class Main {
 		
 		
 		
-		String f = "(1+(2))*1";
+		String f = "( + 1)*1";
 		
 		System.out.println(x.infixToPostfix(f));
 		
-		String i = "1 2 + 3 -";
 		
-		System.out.println(x.evaluate(null));
+		System.out.println(x.evaluate(x.infixToPostfix(f)));
 	
 	}
 	

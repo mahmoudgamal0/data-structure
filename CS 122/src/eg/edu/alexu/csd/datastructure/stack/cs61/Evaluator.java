@@ -249,7 +249,6 @@ public class Evaluator implements IExpressionEvaluator{
 		else if(!isSymbol(expression.charAt(expression.length()-1)))
 			literalsCount++;
 		
-		
 		if (opCount == 0)
 			throw null;
 		else if(literalsCount == 0)
@@ -259,7 +258,7 @@ public class Evaluator implements IExpressionEvaluator{
 			if(opCount >= literalsCount)
 				throw null;
 			else
-				this.flag = 1;
+				throw null;
 		}
 		else if(parenFlag != 0)
 			throw null;
