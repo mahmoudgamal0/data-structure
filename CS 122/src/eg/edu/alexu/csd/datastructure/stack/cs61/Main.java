@@ -9,9 +9,9 @@ public class Main {
 		
 		
 		
-		String f = "";
+		String f = "1+2";
 		
-		System.out.println(x.infixToPostfix(null));
+		System.out.println(x.infixToPostfix(f));
 		
 		String i = "1 2 + 3 -";
 		

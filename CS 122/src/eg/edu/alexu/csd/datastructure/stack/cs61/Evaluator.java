@@ -229,6 +229,8 @@ public class Evaluator implements IExpressionEvaluator{
 				throw null;
 			else if(current == ' ')
 				continue;
+			else if(current == '[' || current == ']' || current == '{' || current == '}')
+				throw null;
 			else
 				literalsCount++;
 		}
