@@ -98,7 +98,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		
 		isNumeric(expression);
 		
-		int result = 0;
+		float result = 0;
 		
 		Stack s = new Stack();
 		
@@ -123,7 +123,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 					throw null;
 				else
 				{
-					result = operation(c, (int)s.pop(), (int)s.pop());
+					result = operation(c, (float)s.pop(), (float)s.pop());
 					s.push(result);
 				}
 			}
@@ -133,7 +133,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 				throw null;
 		}
 		
-		return result;
+		return (int)result;
 	}
 
 	private boolean isOperation(char c)
@@ -158,19 +158,19 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		return false;
 	}
 
-	private int operation(char op , int a, int b)
+	private float operation(char op , float a, float b)
 	{
 		if(op == '+')
-			return a + b;
+			return (a + b);
 		else if(op == '-')
-			return b - a;
+			return (b - a);
 		else if(op == '*')
-			return a * b;
+			return (a * b);
 		else if(op == '/')
 		{
 			if(a == 0)
 				throw null;
-			return b / a;
+			return (b / a);
 		}
 		throw null;
 	}
@@ -222,9 +222,9 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		return true;
 	}
 
-	private int getValue(String expression)
+	private float getValue(String expression)
 	{
-		int value = 0;
+		float value = 0;
 		
 		for (int i = expression.length() - 1 ; i >=0 ; i--)
 		{
@@ -278,7 +278,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 				throw null;
 		}
 		
-		if(ops==literals-1)
+		if(ops==literals - 1)
 			return true;
 		return false;
 	}

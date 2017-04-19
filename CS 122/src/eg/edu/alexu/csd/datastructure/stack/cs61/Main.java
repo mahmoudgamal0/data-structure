@@ -9,9 +9,9 @@ public class Main {
 		
 		
 		
-		String f = "( + 1  ) +1*1";
+		String f = "13/12 -1";
 		
-		System.out.println(x.infixToPostfix(null));
+		System.out.println(x.infixToPostfix(f));
 		
 		
 		System.out.println(x.evaluate(x.infixToPostfix(f)));
