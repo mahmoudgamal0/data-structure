@@ -4,26 +4,14 @@ import eg.edu.alexu.csd.datastructure.stack.IExpressionEvaluator;
 
 public class ExpressionEvaluator implements IExpressionEvaluator{
 	
-	private int flag;
-	
-	public ExpressionEvaluator()
-	{
-		this.flag = 0;
-	}
-	
 	public String infixToPostfix(String expression) {
-		
-		
+			
 		isCorrect(expression);
-		
-		if(this.flag == 1)
-			return null;
 		
 		Stack s = new Stack();
 		String postExpression = "";
 		
 		int parenFlag = 0;
-		
 		
 		for(int i = 0 ; i < expression.length() ; i++)
 		{
@@ -189,81 +177,6 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 
 	private void isCorrect(String expression)
 	{
-		
-//		if(expression == null)
-//			this.flag = 1;
-//		else if(expression.length() == 0)
-//			throw null;
-//		
-//		int ops = 0;
-//		int opCount = 0;
-//		int literalsCount = 0;
-//		int parenFlag = 0;
-//		for (int i = 0 ; i < expression.length()-1 ; i++)
-//		{
-//			char current = expression.charAt(i);
-//			char next = expression.charAt(i+1);
-//			
-//			if(isOperation(current))
-//			{
-//				opCount++;
-//				if(i == 0)
-//					throw null;
-//				else if(isOperation(next))
-//					throw null;
-//			}
-//			else if(isOperation(next) && i+1 == expression.length()-1)
-//				throw null;
-//			else if(current == '(')
-//			{
-//				parenFlag++;
-//				ops = 0;
-//				if(isOperation(next))
-//					throw null;
-//			}
-//			else if(next == ')')
-//			{
-//				parenFlag--;
-//				if(isOperation(current))
-//					throw null;
-//				else if(ops == 0)
-//					throw null;
-//			}
-//			else if(current == '!')
-//				throw null;
-//			else if(current == ' ')
-//				continue;
-//			else if(isBraces(current))
-//				throw null;
-//			else
-//				literalsCount++;
-//			
-//			if(parenFlag != 0 && isOperation(current))
-//			{
-//				ops++;
-//			}
-//		}
-//		
-//		if (expression.charAt(expression.length()-1) == '!' || isBraces(expression.charAt(expression.length()-1))|| isParen(expression.charAt(expression.length()-1)) || isOperation(expression.charAt(expression.length()-1)))
-//			throw null;
-//		else if(!isSymbol(expression.charAt(expression.length()-1)))
-//			literalsCount++;
-//		
-//		if (opCount == 0)
-//			throw null;
-//		else if(literalsCount == 0)
-//			throw null;
-//		else if(opCount != literalsCount-1)
-//		{
-//			if(opCount >= literalsCount)
-//				throw null;
-//			else
-//				this.flag = 1;
-//		}
-//		else if(parenFlag != 0)
-//			throw null;
-		
-		
 		if(expression == null)
 			throw null;
 		else if(expression.length() == 0)
@@ -271,8 +184,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		else if(!testRightParen(expression))
 			throw null;
 		else if(!testOperators(expression))
-			throw null;
-		
+			throw null;	
 	}
 
 	private void isNumeric(String expression)
@@ -320,13 +232,6 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		}
 		
 		return value;
-	}
-
-	private boolean isBraces(char c)		
-	{
-		if(c == '[' || c == ']' || c == '{' || c == '}')
-			return true;
-		return false;
 	}
 
 	private boolean testRightParen(String expression)
