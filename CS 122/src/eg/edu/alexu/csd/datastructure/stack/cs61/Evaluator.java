@@ -230,7 +230,7 @@ public class Evaluator implements IExpressionEvaluator{
 					throw null;
 				else if(ops == 0 || lits == 0)
 					throw null;
-				else if(ops != lits-1)
+				else if(ops >= lits-1)
 					throw null;
 			}
 			else if(current == '!')
