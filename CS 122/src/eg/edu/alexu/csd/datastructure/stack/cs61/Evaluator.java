@@ -215,7 +215,7 @@ public class Evaluator implements IExpressionEvaluator{
 				literalsCount++;
 		}
 		
-		if (expression.charAt(expression.length()-1) == '!' || isSymbol(expression.charAt(expression.length())))
+		if (expression.charAt(expression.length()-1) == '!' || isSymbol(expression.charAt(expression.length()-1)))
 			throw null;
 		else if(!isSymbol(expression.charAt(expression.length()-1)))
 			literalsCount++;
