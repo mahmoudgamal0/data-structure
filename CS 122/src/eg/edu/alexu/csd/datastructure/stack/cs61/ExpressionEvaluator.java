@@ -20,64 +20,53 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 			
 			if(!isSymbol(c))
 			{
-				String temp = "";
-				temp += c;
+				postExpression += c;
+				
 				while(addToString(expression, i+1))
 				{
 					i++;
-					temp += expression.charAt(i);
+					postExpression += expression.charAt(i);
 				}
+				postExpression += ' ';
 				
-				postExpression += temp + " ";
 			}
-			else
+			else if(isOperation(c))
 			{
-				if(isOperation(c))
+				if(s.isEmpty() || isParen((char)s.peek()) || isHigher((char)s.peek(), c))
+						s.push(c);
+				else
 				{
-					if(s.isEmpty() || isParen((char)s.peek()))
-						s.push(c);
-					else if(isHigher((char)s.peek(), c))
-						s.push(c);
-					else if(!isHigher((char)s.peek() , c))
+					if((char)s.peek() == c)
 					{
-						if((char)s.peek() == c)
-						{
-							postExpression += c;
-							postExpression += ' ';
-						}
-						else
-						{
-							while(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek()))
-							{
-								postExpression += s.pop();
-								postExpression += ' ';
-							}
-							s.push(c);
-						}
+						postExpression += c;
+						postExpression += ' ';
 					}
-				}
-				else if(isParen(c))
-				{
-					if(c == '(')
+					else
 					{
-						parenFlag++;
-						s.push(c);
-					}
-					else if(c == ')')
-					{
-						if(parenFlag == 0)
-							throw null;
-						while((char)s.peek() != '(')
+						while(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek()))
 						{
 							postExpression += s.pop();
 							postExpression += ' ';
 						}
-						s.pop();
-						parenFlag--;
+						s.push(c);
 					}
 				}
 			}
+			else if(isParen(c))
+			{
+				if(c == '(')
+				{
+					s.push(c);
+					continue;
+				}
+				while((char)s.peek() != '(')
+				{
+					postExpression += s.pop();
+					postExpression += ' ';
+				}
+				s.pop();
 			
+			}
 		}
 		
 		while(!s.isEmpty())
