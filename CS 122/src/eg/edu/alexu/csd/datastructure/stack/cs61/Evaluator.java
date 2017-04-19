@@ -226,7 +226,7 @@ public class Evaluator implements IExpressionEvaluator{
 		else if(literalsCount == 0)
 			throw null;
 		else if(opCount != literalsCount-1)
-			throw null;
+			throw new RuntimeException();
 	}
 
 	private void isNumeric(String expression)
