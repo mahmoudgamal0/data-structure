@@ -229,13 +229,13 @@ public class Evaluator implements IExpressionEvaluator{
 				throw null;
 			else if(current == ' ')
 				continue;
-			else if(current == '[' || current == ']' || current == '{' || current == '}')
+			else if(isBraces(current))
 				throw null;
 			else
 				literalsCount++;
 		}
 		
-		if (expression.charAt(expression.length()-1) == '!' || expression.charAt(expression.length()-1) == ']' || expression.charAt(expression.length()-1) == '[' || expression.charAt(expression.length()-1) == '{' || expression.charAt(expression.length()-1) == '}'|| isParen(expression.charAt(expression.length()-1)) || isOperation(expression.charAt(expression.length()-1)))
+		if (expression.charAt(expression.length()-1) == '!' || isBraces(expression.charAt(expression.length()-1))|| isParen(expression.charAt(expression.length()-1)) || isOperation(expression.charAt(expression.length()-1)))
 			throw null;
 		else if(!isSymbol(expression.charAt(expression.length()-1)))
 			literalsCount++;
@@ -303,4 +303,10 @@ public class Evaluator implements IExpressionEvaluator{
 		return value;
 	}
 
+	private boolean isBraces(char c)		
+	{
+		if(c == '[' || c == ']' || c == '{' || c == '}')
+			return true;
+		return false;
+	}
 }
