@@ -265,7 +265,10 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		
 		
 		if(expression == null)
+		{
 			this.flag = 1;
+			return;
+		}
 		else if(expression.length() == 0)
 			throw null;
 		else if(!testRightParen(expression))
@@ -371,7 +374,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 			}
 			else if(isOperation(c))
 				ops++;
-			else if(isParen(c))
+			else if(isParen(c) || c == ' ')
 				continue;
 			else
 				throw null;
