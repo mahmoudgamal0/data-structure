@@ -15,7 +15,7 @@ public class Main {
 		
 		String i = "1 2 + 3 -";
 		
-		System.out.println(x.evaluate(i));
+		System.out.println(x.evaluate(null));
 	
 	}
 	
