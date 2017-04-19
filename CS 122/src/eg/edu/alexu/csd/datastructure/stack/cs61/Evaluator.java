@@ -181,6 +181,7 @@ public class Evaluator implements IExpressionEvaluator{
 		if(expression.length() == 0)
 			throw null;
 		int opCount = 0;
+		int literalsCount = 0;
 		for (int i = 0 ; i < expression.length()-1 ; i++)
 		{
 			char current = expression.charAt(i);
@@ -208,9 +209,21 @@ public class Evaluator implements IExpressionEvaluator{
 			}
 			else if(current == '!')
 				throw null;
+			else if(current == ' ')
+				continue;
+			else
+				literalsCount++;
 		}
 		
+		if(!isSymbol(expression.charAt(expression.length()-1)))
+			literalsCount++;
+		
+		
 		if (opCount == 0)
+			throw null;
+		else if(literalsCount == 0)
+			throw null;
+		else if(opCount != literalsCount-1)
 			throw null;
 	}
 
