@@ -29,9 +29,9 @@ public class Evaluator implements IExpressionEvaluator{
 					temp += expression.charAt(i);
 				}
 				
-				if(i + 1 < expression.length() && expression.charAt(i+1) == ')')
-					postExpression += temp + " ";
-				else
+//				if(i + 1 < expression.length() && expression.charAt(i+1) == ')')
+//					postExpression += temp + " ";
+//				else
 					postExpression += temp + " ";
 			}
 			else
