@@ -105,7 +105,7 @@ public class Evaluator implements IExpressionEvaluator{
 	public int evaluate(String expression) {
 		
 		if(expression.length() == 0)
-			throw null;
+			return 0;
 		
 		isNumeric(expression);
 		
