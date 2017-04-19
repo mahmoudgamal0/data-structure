@@ -266,7 +266,7 @@ public class Evaluator implements IExpressionEvaluator{
 			if(opCount >= literalsCount)
 				throw null;
 			else
-				throw null;
+				this.flag = 1;
 		}
 		else if(parenFlag != 0)
 			throw null;
