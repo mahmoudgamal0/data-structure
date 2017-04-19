@@ -9,7 +9,7 @@ public class Main {
 		
 		
 		
-		String f = "(2 + 1) -- 3";
+		String f = "";
 		
 		System.out.println(x.infixToPostfix(f));
 		

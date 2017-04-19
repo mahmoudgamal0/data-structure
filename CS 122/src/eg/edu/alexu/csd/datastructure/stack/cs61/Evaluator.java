@@ -5,6 +5,9 @@ import eg.edu.alexu.csd.datastructure.stack.IExpressionEvaluator;
 public class Evaluator implements IExpressionEvaluator{
 	
 	public String infixToPostfix(String expression) {
+		
+		if(expression.length() == 0)
+			throw null;
 		try{
 			isCorrect(expression);
 		}
@@ -184,8 +187,6 @@ public class Evaluator implements IExpressionEvaluator{
 
 	private void isCorrect(String expression)
 	{
-		if(expression.length() == 0)
-			throw null;
 		int opCount = 0;
 		int literalsCount = 0;
 		for (int i = 0 ; i < expression.length()-1 ; i++)
