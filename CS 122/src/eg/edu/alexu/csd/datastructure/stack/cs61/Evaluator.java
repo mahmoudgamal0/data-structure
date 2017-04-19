@@ -241,7 +241,12 @@ public class Evaluator implements IExpressionEvaluator{
 		else if(literalsCount == 0)
 			throw null;
 		else if(opCount != literalsCount-1)
-			throw null;
+		{
+			if(opCount >= literalsCount)
+				throw null;
+			else
+				this.flag = 1;
+		}
 	}
 
 	private void isNumeric(String expression)
