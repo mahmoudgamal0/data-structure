@@ -6,9 +6,13 @@ public class Evaluator implements IExpressionEvaluator{
 	
 	private int flag;
 	
+	public Evaluator()
+	{
+		this.flag = 0;
+	}
+	
 	public String infixToPostfix(String expression) {
 		
-		this.flag = 0;
 		
 		isCorrect(expression);
 		
@@ -185,11 +189,12 @@ public class Evaluator implements IExpressionEvaluator{
 
 	private void isCorrect(String expression)
 	{
-		if(expression == null  || expression.length() == 0)
-		{
+		
+		if(expression == null)
 			this.flag = 1;
-			return;
-		}
+		else if(expression.length() == 0)
+			throw null;
+		
 		int opCount = 0;
 		int literalsCount = 0;
 		for (int i = 0 ; i < expression.length()-1 ; i++)
