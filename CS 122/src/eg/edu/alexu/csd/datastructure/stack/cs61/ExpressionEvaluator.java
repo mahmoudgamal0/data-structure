@@ -11,7 +11,6 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		Stack s = new Stack();
 		String postExpression = "";
 		
-		int parenFlag = 0;
 		
 		for(int i = 0 ; i < expression.length() ; i++)
 		{
@@ -38,14 +37,14 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 				{
 					if((char)s.peek() == c)
 					{
-						postExpression += c;
+						postExpression += c ;
 						postExpression += ' ';
 					}
 					else
 					{
-						while(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek()))
+						while(!s.isEmpty() && !isHigher((char)s.peek(),c) && !isParen((char)s.peek()))
 						{
-							postExpression += s.pop();
+							postExpression += (char)s.pop();
 							postExpression += ' ';
 						}
 						s.push(c);
@@ -61,22 +60,18 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 				}
 				while((char)s.peek() != '(')
 				{
-					postExpression += s.pop();
+					postExpression += (char)s.pop();
 					postExpression += ' ';
 				}
 				s.pop();
-			
 			}
 		}
-		
 		while(!s.isEmpty())
 		{
-			postExpression += s.pop();
+			postExpression += (char)s.pop();
 			if(!s.isEmpty())
 				postExpression += ' ';
 		}
-			
-		
 		return postExpression;
 	}
 
