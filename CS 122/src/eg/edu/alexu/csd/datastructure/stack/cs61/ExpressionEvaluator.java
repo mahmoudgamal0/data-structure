@@ -44,7 +44,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 			}
 			else if(isOperation(c))
 			{
-				if(s.isEmpty() || isParen((char)s.peek()) || isHigher((char)s.peek(), c))
+				if(!(!s.isEmpty() && !isHigher((char)s.peek(), c) && !isParen((char)s.peek())))
 						s.push(c);
 				else
 				{
