@@ -271,11 +271,11 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 	 */
 	private boolean addToString(String expression, int location)
 	{
-		if(location == expression.length())
+		if(location == expression.length() || isSymbol(expression.charAt(location)))
 			return false;
-		char c = expression.charAt(location);
-		if(isSymbol(c))
-			return false;
+//		char c = expression.charAt(location);
+//		if(isSymbol(c))
+//			return false;
 		return true;
 	}
 
