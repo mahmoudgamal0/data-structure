@@ -22,7 +22,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		isCorrect(expression);
 		
 		Stack s = new Stack();
-		String postExpression = "";
+		StringBuilder postExpression = new StringBuilder(expression.length());
 		
 		
 		for(int i = 0 ; i < expression.length() ; i++)
@@ -32,14 +32,14 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 			
 			if(!isSymbol(c))
 			{
-				postExpression += c;
+				postExpression.append(c);
 				
 				while(addToString(expression, i+1))
 				{
 					i++;
-					postExpression += expression.charAt(i);
+					postExpression.append(expression.charAt(i));
 				}
-				postExpression += ' ';
+				postExpression.append(' ');
 				
 			}
 			else if(isOperation(c))
@@ -50,15 +50,15 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 				{
 					if((char)s.peek() == c)
 					{
-						postExpression += c ;
-						postExpression += ' ';
+						postExpression.append(c) ;
+						postExpression.append(' ');
 					}
 					else
 					{
 						while(!s.isEmpty() && !isHigher((char)s.peek(),c) && !isParen((char)s.peek()))
 						{
-							postExpression += (char)s.pop();
-							postExpression += ' ';
+							postExpression.append((char)s.pop());
+							postExpression.append(' ');
 						}
 						s.push(c);
 					}
@@ -73,19 +73,19 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 				}
 				while((char)s.peek() != '(')
 				{
-					postExpression += (char)s.pop();
-					postExpression += ' ';
+					postExpression.append((char)s.pop());
+					postExpression.append(' ');
 				}
 				s.pop();
 			}
 		}
 		while(!s.isEmpty())
 		{
-			postExpression += (char)s.pop();
+			postExpression.append((char)s.pop());
 			if(!s.isEmpty())
-				postExpression += ' ';
+				postExpression.append(' ');
 		}
-		return postExpression;
+		return postExpression.toString();
 	}
 
 	/**
