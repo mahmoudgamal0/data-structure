@@ -27,6 +27,10 @@ public class Main {
 		y.dequeue();
 		y.print();
 		System.out.println(y.isEmpty());
+		y.enqueue(1);
+		y.print();
+		y.dequeue();
+		y.print();
 		
 	}
 
