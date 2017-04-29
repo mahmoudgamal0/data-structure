@@ -20,10 +20,8 @@ public class QueueArray implements IQueue, IArrayBased {
 	
 	@Override
 	public void enqueue(Object item) {
-		if(size() == this.queue.length - 1)
+		if(size() == this.queue.length)
 			throw null;
-		if(this.rear == this.queue.length - 1)
-			this.rear = 0;
 		this.queue[this.rear] = item;
 		this.rear = (this.rear + 1) % this.queue.length;
 	}
@@ -32,8 +30,6 @@ public class QueueArray implements IQueue, IArrayBased {
 	public Object dequeue() {
 		if(isEmpty())
 			throw null;
-		if(this.front == this.queue.length - 1)
-			this.front = 0;
 		Object temp = this.queue[this.front];
 		this.queue[this.front] = null;
 		this.front = (this.front + 1) % this.queue.length;
@@ -55,7 +51,7 @@ public class QueueArray implements IQueue, IArrayBased {
 	public void print()
 	{
 		System.out.print("Queue: ");
-		for(int i = 0 ; i < this.queue.length -1 ; i++)
+		for(int i = 0 ; i < this.queue.length ; i++)
 		{
 			System.out.print(this.queue[i] + " ");
 		}
