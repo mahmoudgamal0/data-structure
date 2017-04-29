@@ -53,17 +53,4 @@ public class QueueList implements IQueue, ILinkedBased{
 	public int size() {
 		return this.size;
 	}
-
-	public void print()
-	{
-		System.out.print("Queue :");
-		QueueNode temp = this.head;
-		while(temp != null)
-		{
-			System.out.print(temp.getElement() + " ");
-			temp = temp.getNext();
-		}
-		
-		System.out.println();
-	}
 }
