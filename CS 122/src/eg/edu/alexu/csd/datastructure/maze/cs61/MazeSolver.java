@@ -179,7 +179,7 @@ public class MazeSolver implements IMazeSolver{
 			{
 				int op = checkCoord(coordTemp,S);
 				
-				if(S1.size() == 0 && op == 0)
+				if(S.size() == 0 && op == 0)
 					return null;
 				if(S1.size() == 0)
 					S1.push(coordTemp);
