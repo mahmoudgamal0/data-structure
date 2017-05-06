@@ -107,13 +107,13 @@ public class MazeSolver implements IMazeSolver{
 		
 		String tempSize = in.readLine();
 		if(tempSize.length() < 3)
-			throw new IOException();
+			throw null;
 		
 		char n = tempSize.charAt(0);
 		char m = tempSize.charAt(2);
 		
 		if(!Character.isDigit(n) || !Character.isDigit(m))
-			throw new IOException();
+			throw null;
 		
 		int i = Character.getNumericValue(n);
 		int counterI = 0;
@@ -123,7 +123,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		
 		if(i!=counterI)
-			throw new IOException();
+			throw null;
 		
 	}
 	
