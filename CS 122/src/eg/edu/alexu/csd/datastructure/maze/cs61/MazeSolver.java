@@ -24,6 +24,8 @@ public class MazeSolver implements IMazeSolver{
 		
 		try {
 			readFile(maze);
+		} catch(NullPointerException e) {
+			return null;
 		} catch (IOException e) {
 			throw null;
 		}
@@ -49,6 +51,7 @@ public class MazeSolver implements IMazeSolver{
 	private void readFile(File maze) throws IOException
 	{
 		validateFile(maze);
+		
 		this.br = new BufferedReader(new FileReader(maze));
 		String tempSize = br.readLine();
 		this.map = new char[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
@@ -72,7 +75,7 @@ public class MazeSolver implements IMazeSolver{
 		while((tempRow = br.readLine())!=null)
 		{
 			int j = 1;
-			while(j<this.map[i].length-1)
+			while(j < this.map[i].length-1)
 			{	
 				if(tempRow.charAt(j-1) == 'S')
 				{
