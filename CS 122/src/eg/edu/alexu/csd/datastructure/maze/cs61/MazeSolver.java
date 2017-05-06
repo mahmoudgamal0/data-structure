@@ -26,8 +26,6 @@ public class MazeSolver implements IMazeSolver{
 			readFile(maze);
 		} catch (IOException e) {
 			throw null;
-		} catch (NullPointerException e) {
-			return null;
 		}
 		return startBFS();
 		
