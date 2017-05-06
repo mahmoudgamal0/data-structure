@@ -24,9 +24,7 @@ public class MazeSolver implements IMazeSolver{
 		
 		try {
 			readFile(maze);
-		} catch (RuntimeException e) {
-			return null;
-		} 
+		}
 		catch (IOException e) {
 			throw null;
 		}
