@@ -344,8 +344,8 @@ public class PolynomialSolver implements IPolynomialSolver {
 		}
 		return true;
 	}
-	public int getNumberOfSet()
-	{
+
+	public int getNumberOfSet() {
 		return this.numberOfSet;
 	}
 }
