@@ -27,7 +27,6 @@ public class MazeSolver implements IMazeSolver{
 		}
 		catch(Exception e)
 		{
-			System.out.println("wrong file");
 			throw null;
 		}
 		return startBFS();
