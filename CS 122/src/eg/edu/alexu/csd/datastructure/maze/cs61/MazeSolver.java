@@ -26,6 +26,8 @@ public class MazeSolver implements IMazeSolver{
 			readFile(maze);
 		} catch (IOException e) {
 			throw null;
+		} catch (NullPointerException e) {
+			return null;
 		}
 		return startBFS();
 		
@@ -195,6 +197,11 @@ public class MazeSolver implements IMazeSolver{
 
 	private int[][] startDFS()
 	{
+		Stack<int[]> S = new Stack<>();
+		Queue<int[]> Q = new Queue<>();
+		
+		
+		
 		return null;
 	}
 	
