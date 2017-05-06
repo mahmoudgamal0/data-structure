@@ -98,7 +98,7 @@ public class MazeSolver implements IMazeSolver{
 		if(Arrays.equals(this.start, temp))
 			throw new IOException();
 		if(Arrays.equals(this.end, temp))
-			throw null;
+			throw new IOException();
 		
 		this.br.close();
 	}
