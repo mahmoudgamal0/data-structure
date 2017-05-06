@@ -10,7 +10,7 @@ public class Main {
 		
 		MazeSolver ms = new MazeSolver();
 		int[][]	temp = ms.solveDFS(maze);
-		
+		int[][] temp2 = ms.solveDFS(maze);
 		System.out.println(temp[0][0]);
 	}
 

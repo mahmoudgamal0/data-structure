@@ -96,6 +96,8 @@ public class MazeSolver implements IMazeSolver{
 			throw null;
 		if(Arrays.equals(this.end, temp))
 			throw null;
+		
+		this.br.close();
 	}
 
 	private void validateFile(File maze) throws IOException
