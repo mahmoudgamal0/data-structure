@@ -28,9 +28,10 @@ public class MazeSolver implements IMazeSolver{
 		catch(Exception e)
 		{
 			System.out.println("wrong file");
+			throw null;
 		}
-		
 		return startBFS();
+		
 	}
 
 	@Override
@@ -53,7 +54,6 @@ public class MazeSolver implements IMazeSolver{
 	private void readFile(File maze) throws IOException
 	{
 		br = new BufferedReader(new FileReader(maze));
-		
 		String tempSize = br.readLine();
 		this.map = new char[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
 		this.visitedMap = new int[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
@@ -94,6 +94,12 @@ public class MazeSolver implements IMazeSolver{
 			}
 			i++;
 		}	
+		
+		int[] temp = {0,0};
+		if(Arrays.equals(this.start, temp))
+			throw null;
+		if(Arrays.equals(this.end, temp))
+			throw null;
 	}
 	
 	private int[][] startBFS ()
@@ -114,6 +120,8 @@ public class MazeSolver implements IMazeSolver{
 			else
 			{
 				int op = checkCoord(coordTemp,Q);
+				if(Q.size() == 0 && op == 0)
+					throw null;
 				if(S.size() == 0)
 					S.push(coordTemp);
 				else if(((Math.abs(S.top()[0]-coordTemp[0]) == 1 && Math.abs(S.top()[1]-coordTemp[1]) == 0) || (Math.abs(S.top()[0]-coordTemp[0]) == 0 && Math.abs(S.top()[1]-coordTemp[1]) == 1)) && op > 0  )
