@@ -40,7 +40,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		catch(IOException e)
 		{
-			
+			throw null;
 		}
 		
 		return startDFS();
