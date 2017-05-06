@@ -117,10 +117,14 @@ public class MazeSolver implements IMazeSolver{
 			throw new IOException();
 		
 		int i = Character.getNumericValue(n);
+		int j = Character.getNumericValue(m);
 		int counterI = 0;
-		while(in.readLine()!=null)
+		String row = "";
+		while((row = in.readLine())!=null)
 		{
 			counterI++;
+			if(row.length() != j)
+				throw new IOException();
 		}
 		
 		if(i!=counterI)
