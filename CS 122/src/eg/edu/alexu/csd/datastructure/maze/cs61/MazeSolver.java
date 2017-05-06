@@ -167,7 +167,7 @@ public class MazeSolver implements IMazeSolver{
 	{
 		int[][] temp = new int[S.size()][2];
 		
-		for(int i = temp.length-1 ; i >=0 ; i++)
+		for(int i = temp.length-1 ; i >=0 ; i--)
 		{
 			temp[i][0] = S.top()[0];
 			temp[i][1] = S.pop()[1];

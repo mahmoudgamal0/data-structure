@@ -9,7 +9,9 @@ public class Main {
 		File maze = new File("jimmy.txt");
 		
 		MazeSolver ms = new MazeSolver();
-		ms.solveBFS(maze);
+		int[][]	temp = ms.solveBFS(maze);
+		
+		System.out.println(temp[0][0]);
 	}
 
 }
