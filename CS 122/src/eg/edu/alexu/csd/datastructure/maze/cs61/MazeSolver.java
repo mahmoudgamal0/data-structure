@@ -27,7 +27,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		catch(Exception e)
 		{
-			throw null;
+			return null;
 		}
 		return startBFS();
 		
