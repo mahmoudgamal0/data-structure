@@ -24,7 +24,10 @@ public class MazeSolver implements IMazeSolver{
 		
 		try {
 			readFile(maze);
-		} catch (IOException e) {
+		} catch (RuntimeException e) {
+			throw null;
+		} 
+		catch (IOException e) {
 			throw null;
 		}
 		return startBFS();
@@ -46,7 +49,7 @@ public class MazeSolver implements IMazeSolver{
 		return startDFS();
 	}
 
-	private void readFile(File maze) throws IOException
+	private void readFile(File maze) throws IOException, RuntimeException
 	{
 		validateFile(maze);
 		
@@ -94,9 +97,9 @@ public class MazeSolver implements IMazeSolver{
 		
 		int[] temp = {0,0};
 		if(Arrays.equals(this.start, temp))
-			throw new IOException();
+			throw new RuntimeException();
 		if(Arrays.equals(this.end, temp))
-			throw new IOException();
+			throw new RuntimeException();
 		
 		this.br.close();
 	}
@@ -107,13 +110,13 @@ public class MazeSolver implements IMazeSolver{
 		
 		String tempSize = in.readLine();
 		if(tempSize.length() < 3)
-			throw null;
+			throw new IOException();
 		
 		char n = tempSize.charAt(0);
 		char m = tempSize.charAt(2);
 		
 		if(!Character.isDigit(n) || !Character.isDigit(m))
-			throw null;
+			throw new IOException();
 		
 		int i = Character.getNumericValue(n);
 		int counterI = 0;
@@ -123,7 +126,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		
 		if(i!=counterI)
-			throw null;
+			throw new IOException();
 		
 	}
 	
