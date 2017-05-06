@@ -128,7 +128,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		
 		if(i!=counterI)
-			throw new RuntimeException();
+			throw new IOException();
 		
 	}
 	
