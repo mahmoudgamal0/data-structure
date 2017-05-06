@@ -27,7 +27,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		catch(IOException e)
 		{
-			
+		
 		}
 		return startBFS();
 		
@@ -40,14 +40,12 @@ public class MazeSolver implements IMazeSolver{
 		{
 			readFile(maze);
 		}
-		catch(Exception e)
+		catch(IOException e)
 		{
-			System.out.println("wrong file");
+			
 		}
 		
-		
-		
-		return null;
+		return startDFS();
 	}
 
 	private void readFile(File maze) throws IOException
@@ -170,6 +168,11 @@ public class MazeSolver implements IMazeSolver{
 		return op;
 	}
 
+	private int[][] startDFS()
+	{
+		return null;
+	}
+	
 	private int[][] toArray(Stack<int[]> S)
 	{
 		int[][] temp = new int[S.size()][2];
@@ -182,4 +185,6 @@ public class MazeSolver implements IMazeSolver{
 		
 		return temp;
 	}
+
 }
+
