@@ -73,6 +73,8 @@ public class MazeSolver implements IMazeSolver{
 		while((tempRow = br.readLine())!=null)
 		{
 			int j = 1;
+			if(tempRow.length() != this.map[i].length)
+				throw null;
 			while(j<this.map[i].length-1)
 			{	
 				if(tempRow.charAt(j-1) == 'S')
