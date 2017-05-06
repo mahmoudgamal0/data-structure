@@ -94,10 +94,10 @@ public class MazeSolver implements IMazeSolver{
 		}	
 		
 		int[] temp = {0,0};
-//		if(Arrays.equals(this.start, temp))
-//			throw null;
-//		if(Arrays.equals(this.end, temp))
-//			throw null;
+		if(Arrays.equals(this.start, temp))
+			throw null;
+		if(Arrays.equals(this.end, temp))
+			throw null;
 		
 		this.br.close();
 	}
