@@ -21,13 +21,11 @@ public class MazeSolver implements IMazeSolver{
 	@Override
 	public int[][] solveBFS(File maze) {
 		
-		try
-		{
-			readFile(maze);
-		}
-		catch(IOException e)
-		{
 		
+		try {
+			readFile(maze);
+		} catch (IOException e) {
+			return null;
 		}
 		return startBFS();
 		
@@ -50,6 +48,7 @@ public class MazeSolver implements IMazeSolver{
 
 	private void readFile(File maze) throws IOException
 	{
+		validateFile(maze);
 		br = new BufferedReader(new FileReader(maze));
 		String tempSize = br.readLine();
 		this.map = new char[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
@@ -97,6 +96,32 @@ public class MazeSolver implements IMazeSolver{
 			throw null;
 		if(Arrays.equals(this.end, temp))
 			throw null;
+	}
+
+	private void validateFile(File maze) throws IOException
+	{
+		BufferedReader in = new BufferedReader(new FileReader(maze));
+		
+		String tempSize = in.readLine();
+		if(tempSize.length() < 3)
+			throw new IOException();
+		
+		char n = tempSize.charAt(0);
+		char m = tempSize.charAt(2);
+		
+		if(!Character.isDigit(n) || !Character.isDigit(m))
+			throw new IOException();
+		
+		int i = Character.getNumericValue(n);
+		int j = Character.getNumericValue(m);
+		int counterI = 0;
+		while(in.readLine()!=null)
+		{
+			counterI++;
+		}
+		
+		if(i!=counterI)
+			throw new IOException();
 	}
 	
 	private int[][] startBFS ()
