@@ -158,7 +158,41 @@ public class MazeSolver implements IMazeSolver{
 		return toArray(S);
 		
 	}
-
+	
+	private int[][] startDFS()
+	{
+		Stack<int[]> S = new Stack<>();
+		Stack<int[]> S1 = new Stack<>();
+		
+		S.push(this.start);
+		while(S.size() > 0)
+		{
+			int[] coordTemp = S.pop();
+			this.visitedMap[coordTemp[0]][coordTemp[1]] = 1;
+			
+			if(Arrays.equals(coordTemp, this.end))
+			{
+				S1.push(coordTemp);
+				break;
+			}
+			else
+			{
+				int op = checkCoord(coordTemp,S);
+				
+				if(S1.size() == 0 && op == 0)
+					return null;
+				if(S1.size() == 0)
+					S1.push(coordTemp);
+				else if(((Math.abs(S1.top()[0]-coordTemp[0]) == 1 && Math.abs(S1.top()[1]-coordTemp[1]) == 0) || (Math.abs(S1.top()[0]-coordTemp[0]) == 0 && Math.abs(S1.top()[1]-coordTemp[1]) == 1)) && op > 0  )
+				{
+					S1.push(coordTemp);
+				}
+			}
+		}
+		
+		return toArray(S1);
+	}
+	
 	private int checkCoord(int[] coord, Queue<int[]> Q)
 	{
 		int op = 0;
@@ -193,16 +227,40 @@ public class MazeSolver implements IMazeSolver{
 		return op;
 	}
 
-	private int[][] startDFS()
+	private int checkCoord(int[] coord, Stack<int[]> S)
 	{
-		Stack<int[]> S = new Stack<>();
-		Queue<int[]> Q = new Queue<>();
+		int op = 0;
+		if(this.map[coord[0] + 0][coord[1] + -1] != '#' && this.visitedMap[coord[0] + 0][coord[1] + -1] == 0)
+		{
+			int[] temp = {coord[0] + 0, coord[1] + -1};
+			S.push(temp);
+			op++;
+		}
 		
+		if(this.map[coord[0] + 0][coord[1] + 1] != '#' && this.visitedMap[coord[0] + 0][coord[1] + 1] == 0)
+		{
+			int[] temp = {coord[0] + 0, coord[1] + 1};
+			S.push(temp);
+			op++;
+		}
 		
+		if(this.map[coord[0] + -1][coord[1] + 0] != '#' && this.visitedMap[coord[0] + -1][coord[1] + 0] == 0)
+		{
+			int[] temp = {coord[0] + -1, coord[1] + 0};
+			S.push(temp);
+			op++;
+		}
 		
-		return null;
+		if(this.map[coord[0] + 1][coord[1] + 0] != '#' && this.visitedMap[coord[0] + 1][coord[1] + 0] == 0)
+		{
+			int[] temp = {coord[0] + 1, coord[1] + 0};
+			S.push(temp);
+			op++;
+		}
+		
+		return op;
 	}
-	
+
 	private int[][] toArray(Stack<int[]> S)
 	{
 		int[][] temp = new int[S.size()][2];
