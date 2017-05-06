@@ -49,16 +49,37 @@ public class MazeSolver implements IMazeSolver{
 
 	private void readFile(File maze) throws IOException, RuntimeException
 	{
-		validateFile(maze);
 		
 		this.br = new BufferedReader(new FileReader(maze));
 		String tempSize = br.readLine();
-		this.map = new char[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
-		this.visitedMap = new int[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
+		String num1 = "";
+		String num2 = "";
+		
+		int i = 0;
+		for(i = 0 ; i < tempSize.length() ; i++)
+		{
+			if(tempSize.charAt(i) == ' ')
+				break;
+			num1 += tempSize.charAt(i);
+		}
+		
+		
+		for(int j = i+1 ; j < tempSize.length() ; j++)
+		{
+			if(tempSize.charAt(j) == ' ')
+				break;
+			num2 += tempSize.charAt(j);
+		}
+		
+		int n = Integer.parseInt(num1);
+		int m = Integer.parseInt(num2);
+		
+		this.map = new char[n+2][m+2];
+		this.visitedMap = new int[n+2][m+2];
 		this.start = new int[2];
 		this.end = new int[2];
 		
-		for(int i = 0 ; i <this.map.length ; i++)
+		for(i = 0 ; i <this.map.length ; i++)
 		{
 			for(int j = 0 ; j <this.map[0].length; j++)
 			{
@@ -70,7 +91,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		
 		String tempRow = "";
-		int i = 1;
+		i = 1;
 		while((tempRow = br.readLine())!=null)
 		{
 			int j = 1;
@@ -102,35 +123,6 @@ public class MazeSolver implements IMazeSolver{
 		this.br.close();
 	}
 
-	private void validateFile(File maze) throws IOException
-	{
-		BufferedReader in = new BufferedReader(new FileReader(maze));
-		
-		String tempSize = in.readLine();
-		if(tempSize.length() < 3)
-			throw new IOException();
-		
-		char n = tempSize.charAt(0);
-		char m = tempSize.charAt(2);
-		
-		if(!Character.isDigit(n) || !Character.isDigit(m))
-			throw new IOException();
-		
-		int i = Character.getNumericValue(n);
-		int j = Character.getNumericValue(m);
-		int counterI = 0;
-		String row = "";
-		while((row = in.readLine())!=null)
-		{
-			counterI++;
-			if(row.length() != j)
-				throw new IOException();
-		}
-		
-		if(i!=counterI)
-			throw new IOException();
-		
-	}
 	
 	private int[][] startBFS ()
 	{
