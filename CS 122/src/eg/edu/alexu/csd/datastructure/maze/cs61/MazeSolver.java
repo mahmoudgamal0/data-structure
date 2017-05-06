@@ -26,7 +26,7 @@ public class MazeSolver implements IMazeSolver{
 			readFile(maze);
 		}
 		catch (IOException e) {
-			return null;
+			throw null;
 		}
 		return startBFS();
 		
@@ -41,7 +41,7 @@ public class MazeSolver implements IMazeSolver{
 		}
 		catch(IOException e)
 		{
-			return null;
+			throw null;
 		}
 		
 		return startDFS();
@@ -95,9 +95,9 @@ public class MazeSolver implements IMazeSolver{
 		
 		int[] temp = {0,0};
 		if(Arrays.equals(this.start, temp))
-			throw new IOException();
+			throw null;
 		if(Arrays.equals(this.end, temp))
-			throw new IOException();
+			throw null;
 		
 		this.br.close();
 	}
