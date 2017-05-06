@@ -95,9 +95,9 @@ public class MazeSolver implements IMazeSolver{
 		
 		int[] temp = {0,0};
 		if(Arrays.equals(this.start, temp))
-			throw new RuntimeException();
+			throw new IOException();
 		if(Arrays.equals(this.end, temp))
-			throw new RuntimeException();
+			throw new IOException();
 		
 		this.br.close();
 	}
