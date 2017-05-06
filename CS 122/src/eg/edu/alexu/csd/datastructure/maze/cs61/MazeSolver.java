@@ -49,7 +49,7 @@ public class MazeSolver implements IMazeSolver{
 	private void readFile(File maze) throws IOException
 	{
 		validateFile(maze);
-		br = new BufferedReader(new FileReader(maze));
+		this.br = new BufferedReader(new FileReader(maze));
 		String tempSize = br.readLine();
 		this.map = new char[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
 		this.visitedMap = new int[Character.getNumericValue(tempSize.charAt(0))+2][Character.getNumericValue(tempSize.charAt(2))+2];
