@@ -96,7 +96,7 @@ public class MazeSolver implements IMazeSolver{
 		
 		int[] temp = {0,0};
 		if(Arrays.equals(this.start, temp))
-			throw null;
+			throw new IOException();
 		if(Arrays.equals(this.end, temp))
 			throw null;
 		
@@ -118,7 +118,6 @@ public class MazeSolver implements IMazeSolver{
 			throw new IOException();
 		
 		int i = Character.getNumericValue(n);
-		int j = Character.getNumericValue(m);
 		int counterI = 0;
 		while(in.readLine()!=null)
 		{
@@ -127,6 +126,7 @@ public class MazeSolver implements IMazeSolver{
 		
 		if(i!=counterI)
 			throw new IOException();
+		
 	}
 	
 	private int[][] startBFS ()
