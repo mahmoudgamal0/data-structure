@@ -11,7 +11,16 @@ public class Main {
 		MazeSolver ms = new MazeSolver();
 		int[][]	temp = ms.solveBFS(maze);
 		int[][] temp2 = ms.solveDFS(maze);
-		System.out.println(temp[0][0]);
+		
+		for(int i = 0 ; i < temp.length ; i++)
+		{
+			System.out.println(temp[i][0] + ", " + temp[i][1]);
+		}
+		System.out.println("==========================");
+		for(int i = 0 ; i < temp2.length ; i++)
+		{
+			System.out.println(temp2[i][0] + ", " + temp2[i][1]);
+		}
 	}
 
 }
